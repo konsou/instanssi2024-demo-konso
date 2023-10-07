@@ -1,17 +1,19 @@
-color[][] grid;
+boolean[][] grid;
+final boolean ALIVE = true;
+final boolean DEAD = false;
 color RED = color(255, 0, 0);
 color GREEN = color(0, 255, 0);
 color BLUE = color(0, 0, 255);
 color BLACK = color(0, 0, 0);
-color ALIVE = GREEN;
-color DEAD = BLACK;
+color ALIVE_COLOR = GREEN;
+color DEAD_COLOR = BLACK;
 int pixelSize;
-int gridSizeX = 100;
-int gridSizeY = 100;
+int gridSizeX = 192;
+int gridSizeY = 108;
 
 
 void setup() {
-  size(1000, 500);
+  size(1920, 1080);
   // Currently only supports "pixels" that have the same length and height
   pixelSize = width / gridSizeX;
 
@@ -20,10 +22,19 @@ void setup() {
   hint(ENABLE_STROKE_PURE);
   strokeWeight(pixelSize);
   strokeCap(ROUND);
-  frameRate(5);
+  frameRate(60);
 }
 
+final int runtimeMs = 10000;
 void draw() {
+
+  if (millis() > runtimeMs){
+    float avgFPS = float(frameCount) / float(millis()) * 1000.0;
+    println("Frame Count: " + frameCount);
+    println("millis():    " + millis());
+    println("Ran for " + runtimeMs + " ms, avg FPS: " + avgFPS);
+    exit();
+  }
   background(BLACK);
 
   grid = processLife(grid);
@@ -34,20 +45,22 @@ void draw() {
       int topLeftY = y * pixelSize;
       float cellCenterX = topLeftX + pixelSize / 2;
       float cellCenterY = topLeftY + pixelSize / 2;
-      stroke(grid[x][y]);
-      point(cellCenterX, cellCenterY);
+      if (grid[x][y]) { 
+        stroke(ALIVE_COLOR); 
+        point(cellCenterX, cellCenterY);
+        }
     }
   }
 }
 
-color[][] processLife(color[][] grid){
+boolean[][] processLife(boolean[][] grid){
   int gridWidth = grid.length;
   int gridHeight = grid[0].length;
-  color[][] newGrid = new color[gridWidth][gridHeight];
+  boolean[][] newGrid = new boolean[gridWidth][gridHeight];
   for (int y = 0; y < gridHeight; y++) {
     for (int x = 0; x < gridWidth; x++) {
       int aliveN = aliveNeighbours(x, y, grid);
-      color currentCell = grid[x][y];
+      boolean currentCell = grid[x][y];
       if (currentCell == DEAD && aliveN == 3){ newGrid[x][y] = ALIVE; }
       else if (currentCell == ALIVE && (aliveN == 2 || aliveN == 3)){ newGrid[x][y] = ALIVE; }
       else { newGrid[x][y] = DEAD; }
@@ -67,12 +80,12 @@ int[] neighbourYOffsets = {
                             1,  1,  1,
                           };
 
-int aliveNeighbours(int x, int y, color[][] grid){
+int aliveNeighbours(int x, int y, boolean[][] grid){
   int aliveNeighbours = 0;
   for (int i = 0; i < 8; i++){
     int xOffset = neighbourXOffsets[i];
     int yOffset = neighbourYOffsets[i];
-    color neighbour;
+    boolean neighbour;
     try { neighbour = grid[x + xOffset][y + yOffset]; }
     catch (ArrayIndexOutOfBoundsException e) { continue; }  // Values outside grid are considered dead
     if (neighbour != DEAD){ aliveNeighbours++; }
@@ -80,8 +93,8 @@ int aliveNeighbours(int x, int y, color[][] grid){
   return aliveNeighbours;
 }
 
-color[][] initGrid(int width, int height){
-  grid = new color[width][height];
+boolean[][] initGrid(int width, int height){
+  grid = new boolean[width][height];
 
   for (int y = 0; y < height; y++) {
     for (int x = 0; x < width; x++) {
@@ -93,6 +106,5 @@ color[][] initGrid(int width, int height){
       }
     }
   }
-
   return grid;
 }
