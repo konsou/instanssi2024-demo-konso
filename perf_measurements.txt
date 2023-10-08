@@ -22,3 +22,8 @@ Only check alive cells and their dead neighbours (reverted)
 Ran for 10000 ms, Frame Count: 977 avg FPS: 97.5829
 Ran for 10000 ms, Frame Count: 950 avg FPS: 94.9905
 Ran for 10000 ms, Frame Count: 955 avg FPS: 95.49045
+
+ChatGPT refactoring
+Ran for 10000 ms, Frame Count: 1000 avg FPS: 99.87017
+Ran for 10000 ms, Frame Count: 1013 avg FPS: 101.22914
+Ran for 10000 ms, Frame Count: 1030 avg FPS: 102.9897
