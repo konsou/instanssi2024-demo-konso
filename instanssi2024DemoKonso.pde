@@ -35,9 +35,8 @@ void draw() {
 
   if (millis() > runtimeMs){
     float avgFPS = float(frameCount) / float(millis()) * 1000.0;
-    println("Frame Count: " + frameCount);
-    println("millis():    " + millis());
-    println("Ran for " + runtimeMs + " ms, avg FPS: " + avgFPS);
+    println();
+    println("Ran for " + runtimeMs + " ms, Frame Count: " + frameCount + " avg FPS: " + avgFPS);
     exit();
   }
   background(BLACK);
@@ -87,6 +86,11 @@ int[] neighbourYOffsets = {
                             1,  1,  1,
                           };
 
+/**
+Return number of alive neighbours.
+Off-grid cells are considered dead.
+Will exit early if returning 4 neighbours, since
+life logic doesn't need more exact numbers. */
 int aliveNeighbours(int x, int y, boolean[] grid){
   int aliveNeighbours = 0;
   //println("aliveNeighbours: x: " + x + " y: " + y);
@@ -94,9 +98,9 @@ int aliveNeighbours(int x, int y, boolean[] grid){
     int xOffset = neighbourXOffsets[i];
     int yOffset = neighbourYOffsets[i];
     int neighbourX = x + xOffset;
+    if (neighbourX < 0 || neighbourX >= gridSizeX){ continue; } // Values outside grid are considered dead
     int neighbourY = y + yOffset;
     //println(" neighbourX: " + neighbourX + " neighbourY: " + neighbourY);
-    if (neighbourX < 0 || neighbourX >= gridSizeX){ continue; } // Values outside grid are considered dead
     if (neighbourY < 0 || neighbourY >= gridSizeY){ continue; } // Values outside grid are considered dead
 
     int neighbourIndex = xyToIndex(neighbourX, neighbourY);
@@ -105,7 +109,10 @@ int aliveNeighbours(int x, int y, boolean[] grid){
     //println("neighbour state: " + neighbour);
     // try { neighbour = grid[neighbourIndex]; }
     // catch (ArrayIndexOutOfBoundsException e) { continue; }  // Values outside grid are considered dead
-    if (neighbour != DEAD){ aliveNeighbours++; }
+    if (neighbour == ALIVE){ 
+      aliveNeighbours++; 
+      if (aliveNeighbours >= 4){ return aliveNeighbours; }
+      }
   }
   //println("Found " + aliveNeighbours + " neighbours");
   return aliveNeighbours;
@@ -115,11 +122,12 @@ boolean[] initGrid(int width, int height){
   grid = new boolean[width * height];
 
   for (int i = 0; i < gridCellCount; i++) {
-    int randomNumber = int(random(2));
-    if (randomNumber == 0) {
-      grid[i] = DEAD;
-    } else {
+    // int randomNumber = int(random(2));
+    //println(i % 4);
+    if (i % 4 == 0) {
       grid[i] = ALIVE;
+    } else {
+      grid[i] = DEAD;
     }
   }
   return grid;

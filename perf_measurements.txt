@@ -1,53 +1,19 @@
-1080p
-Frame Count: 87
-millis():    10027
-Ran for 10000 ms, avg FPS: 8.676574
-Frame Count: 90
-millis():    10043
-Ran for 10000 ms, avg FPS: 8.961466
-Finished.
-Frame Count: 89
-millis():    10054
-Ran for 10000 ms, avg FPS: 8.852198
-Finished.
+Baseline 23-10-08:
+Standard grid:
+    if (i % 4 == 0) {
+      grid[i] = ALIVE;
+    } else {
+      grid[i] = DEAD;
+    }
 
+Helper command:
+1..3 | % { C:\Users\tomij\Downloads\processing-4.3\processing-java.exe --sketch="c:\Github\instanssi2024DemoKonso" --run }
 
-----
+Ran for 10000 ms, Frame Count: 561 avg FPS: 56.071964
+Ran for 10000 ms, Frame Count: 560 avg FPS: 55.972015
+Ran for 10000 ms, Frame Count: 563 avg FPS: 56.288742
 
-Move drawing to processLife - WORSE?
-
-Frame Count: 81
-millis():    10032
-Ran for 10000 ms, avg FPS: 8.0741625
-Finished.
-Frame Count: 84
-millis():    10089
-Ran for 10000 ms, avg FPS: 8.3259
-Finished.
-Frame Count: 85
-millis():    10044
-Ran for 10000 ms, avg FPS: 8.462764
-
------
-
-color -> boolean - no change
-Frame Count: 89
-millis():    10010
-Ran for 10000 ms, avg FPS: 8.8911085
-Finished.
-Frame Count: 87
-millis():    10057
-Ran for 10000 ms, avg FPS: 8.650691
-Finished.
-Frame Count: 90
-millis():    10056
-Ran for 10000 ms, avg FPS: 8.949881
-Finished.
-
------
-
-Only draw alive cells: frame count ~240, FPS 24
-
----
-
-Use 1d array: Frame Count: 555, avg FPS: 55.461174
+Minor aliveNeighbours optimization (return max 4)
+Ran for 10000 ms, Frame Count: 559 avg FPS: 55.833
+Ran for 10000 ms, Frame Count: 561 avg FPS: 56.049557
+Ran for 10000 ms, Frame Count: 563 avg FPS: 56.19884
