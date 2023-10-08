@@ -18,7 +18,7 @@ Ran for 10000 ms, Frame Count: 1068 avg FPS: 106.66134
 Ran for 10000 ms, Frame Count: 1088 avg FPS: 108.7565
 Ran for 10000 ms, Frame Count: 1010 avg FPS: 100.9899
 
-Only check alive cells and their dead neighbours
+Only check alive cells and their dead neighbours (reverted)
 Ran for 10000 ms, Frame Count: 977 avg FPS: 97.5829
 Ran for 10000 ms, Frame Count: 950 avg FPS: 94.9905
 Ran for 10000 ms, Frame Count: 955 avg FPS: 95.49045
