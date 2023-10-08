@@ -17,3 +17,8 @@ Minor aliveNeighbours optimization (return max 4)
 Ran for 10000 ms, Frame Count: 559 avg FPS: 55.833
 Ran for 10000 ms, Frame Count: 561 avg FPS: 56.049557
 Ran for 10000 ms, Frame Count: 563 avg FPS: 56.19884
+
+Only check alive cells and their dead neighbours (and set fps cap to 999)
+Ran for 10000 ms, Frame Count: 977 avg FPS: 97.5829
+Ran for 10000 ms, Frame Count: 950 avg FPS: 94.9905
+Ran for 10000 ms, Frame Count: 955 avg FPS: 95.49045
