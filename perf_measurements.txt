@@ -47,3 +47,7 @@ Finished.
 -----
 
 Only draw alive cells: frame count ~240, FPS 24
+
+---
+
+Use 1d array: Frame Count: 555, avg FPS: 55.461174
