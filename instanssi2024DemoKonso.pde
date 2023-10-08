@@ -1,4 +1,7 @@
 boolean[] grid;
+final boolean BENCHMARK_MODE = true;
+final int benchmarkRuntimeMs = 10000;
+
 final boolean ALIVE = true;
 final boolean DEAD = false;
 color RED = color(255, 0, 0);
@@ -30,13 +33,12 @@ void setup() {
   frameRate(999);
 }
 
-final int runtimeMs = 10000;
 void draw() {
 
-  if (millis() > runtimeMs){
+  if (BENCHMARK_MODE && millis() > benchmarkRuntimeMs){
     float avgFPS = float(frameCount) / float(millis()) * 1000.0;
     println();
-    println("Ran for " + runtimeMs + " ms, Frame Count: " + frameCount + " avg FPS: " + avgFPS);
+    println("Ran for " + benchmarkRuntimeMs + " ms, Frame Count: " + frameCount + " avg FPS: " + avgFPS);
     exit();
   }
   background(BLACK);
