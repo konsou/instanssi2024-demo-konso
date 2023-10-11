@@ -20,7 +20,7 @@ processing-java --sketch=$(pwd) --run auto-benchmark $RUNTIME_SECONDS $FPS_CAP |
 
 git add $OUTPUT_FILENAME
 git commit -m "Add benchmark info"
-git push
+git push git@github.com:konsou/instanssi2024DemoKonso.git
 
 # Clean up Xvfb
 sudo pkill -f "Xvfb :99"
