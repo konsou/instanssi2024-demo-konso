@@ -32,3 +32,8 @@ Add random color selection
 Ran for 10000 ms, Frame Count: 1025 avg FPS: 102.43854
 Ran for 10000 ms, Frame Count: 1068 avg FPS: 106.78932
 Ran for 10000 ms, Frame Count: 1065 avg FPS: 106.45742
+
+Reuse existing arrays
+Ran for 10000 ms, Frame Count: 1056 avg FPS: 105.58944
+Ran for 10000 ms, Frame Count: 1044 avg FPS: 104.337395
+Ran for 10000 ms, Frame Count: 1083 avg FPS: 108.27834

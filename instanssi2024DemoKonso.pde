@@ -1,6 +1,10 @@
-boolean[] grid;
+// Benchmarking
 final boolean BENCHMARK_MODE = true;
 final int BENCHMARK_RUNTIME_MS = 10000;
+
+// Two grid arrays that are reused
+boolean[] PRIMARY_GRID;
+boolean[] SECONDARY_GRID;
 
 final boolean ALIVE = true;
 final boolean DEAD = false;
@@ -12,20 +16,20 @@ final color DARKER_GREEN = color(0, 100, 17);
 final color ALMOST_BLACK = color(39, 39, 39);
 final color ALMOST_WHITE = color(240, 240, 240);
 
-final color ALIVE_COLOR = LIGHTER_GREEN;
+final color[] ALIVE_COLORS = { LIGHTER_GREEN, MAIN_COLOR_GREEN, DARKER_GREEN};
+final int[] ALIVE_COLOR_WEIGHTS = { 5, 1, 1 };
+color[] weightedAliveColors;
+
 final color DEAD_COLOR = ALMOST_BLACK;
 final color BACKGROUND_COLOR = ALMOST_BLACK;
 
-final color[] ALIVE_COLORS = { LIGHTER_GREEN, MAIN_COLOR_GREEN, DARKER_GREEN};
-final int[] ALIVE_COLOR_WEIGHTS = { 5, 1, 1 };
-
-color[] weightedAliveColors;
-
+// Grid size
 int pixelSize;
 int gridSizeX = 192;
 int gridSizeY = 108;
 int gridCellCount = gridSizeX * gridSizeY;
 
+// TODO: Camera control
 float HALF_WIDTH;
 float HALF_HEIGHT;
 float CAMERA_DEFAULT_Z;
@@ -40,12 +44,13 @@ void setup() {
 
   // Only supports "pixels" that have the same length and height
   pixelSize = width / gridSizeX;
-  grid = initGrid(gridSizeX, gridSizeY);
+  PRIMARY_GRID = initGrid(gridSizeX, gridSizeY);
+  SECONDARY_GRID = initGrid(gridSizeX, gridSizeY);
 
   hint(ENABLE_STROKE_PURE);
   strokeWeight(pixelSize);
   strokeCap(ROUND);
-  frameRate(10);
+  frameRate(999);
 }
 
 void draw() {
@@ -54,19 +59,33 @@ void draw() {
     println("Ran for " + BENCHMARK_RUNTIME_MS + " ms, Frame Count: " + frameCount + " avg FPS: " + avgFPS);
     exit();
   }
+  /*
   camera(
     frameCount % 100, HALF_HEIGHT, CAMERA_DEFAULT_Z, 
     HALF_WIDTH, HALF_HEIGHT, 0,
     0, 1, 0
     );
+  */
 
   background(BACKGROUND_COLOR);
-  grid = processLife(grid);
+
+  boolean[] currentGrid, newGrid;
+
+  if (frameCount % 2 == 0){
+    currentGrid = PRIMARY_GRID;
+    newGrid = SECONDARY_GRID;
+  } else {
+    currentGrid = SECONDARY_GRID;
+    newGrid = PRIMARY_GRID;
+  }
+
+  // processLife modifies newGrid
+  processLife(currentGrid, newGrid);  
   
   for (int i = 0; i < gridCellCount; i++) {
     int x = indexToX(i);
     int y = indexToY(i, x);
-    displayCell(x, y, grid[i]);
+    displayCell(x, y, newGrid[i]);
   }
 }
 
@@ -80,9 +99,18 @@ void displayCell(int x, int y, boolean isAlive) {
   }
 }
 
-boolean[] processLife(boolean[] currentGrid) {
-  boolean[] newGrid = new boolean[gridCellCount];
-  
+/**
+ * Processes the Game of Life logic on the provided current grid and writes the 
+ * results to the new grid. Both grids should be of the same size. The function 
+ * assumes that the `currentGrid` represents the current state of the Game of 
+ * Life, and it calculates the next state, writing it directly to the `newGrid`.
+ *
+ * This function modifies the `newGrid` directly for performance reasons.
+ *
+ * @param currentGrid The current state of the Game of Life grid.
+ * @param newGrid     An array where the next state of the Game of Life will be written.
+ */
+void processLife(boolean[] currentGrid, boolean[] newGrid) {
   for (int i = 0; i < gridCellCount; i++) {
     int x = indexToX(i);
     int y = indexToY(i, x);
@@ -90,8 +118,6 @@ boolean[] processLife(boolean[] currentGrid) {
     
     newGrid[i] = computeNewState(currentGrid[i], aliveNeighbours);
   }
-
-  return newGrid;
 }
 
 boolean computeNewState(boolean currentState, int aliveNeighbours) {
@@ -118,7 +144,10 @@ int getAliveNeighbours(int x, int y, boolean[] grid) {
     int neighbourX = x + neighbourXOffsets[i];
     int neighbourY = y + neighbourYOffsets[i];
     
-    if (isInsideGrid(neighbourX, neighbourY) && grid[xyToIndex(neighbourX, neighbourY)] == ALIVE) {
+    if (
+        isInsideGrid(neighbourX, neighbourY) && 
+        grid[xyToIndex(neighbourX, neighbourY)] == ALIVE
+      ) {
       aliveNeighbours++;
       if (aliveNeighbours >= 4) return aliveNeighbours;  // Optimize for game of life rules
     }
