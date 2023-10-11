@@ -17,7 +17,6 @@ GIT_REPO=git@github.com:konsou/instanssi2024DemoKonso.git
 
 # Capture CPU load
 load_avg=$(uptime | awk -F'[a-z]:' '{ print $2 }')
-echo "Load Average before benchmark: $load_avg" | tee -a $OUTPUT_FILENAME
 
 # Check if the lock file exists before trying to remove it
 if [ -e /tmp/.X99-lock ]; then
@@ -37,6 +36,7 @@ parse_frame_count() {
 # Run the benchmark
 echo "--------------------------" >> $OUTPUT_FILENAME
 git log -1 >> $OUTPUT_FILENAME
+echo "Load Average before benchmark: $load_avg" | tee -a $OUTPUT_FILENAME
 processing-java --sketch=$(pwd) --run auto-benchmark $RUNTIME_SECONDS $FPS_CAP | tee -a $OUTPUT_FILENAME
 
 # Parse the frame counts
