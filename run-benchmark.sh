@@ -15,6 +15,10 @@ OUTPUT_FILENAME=perf-measurements.log
 BASELINE_FILENAME=perf-baseline.log
 GIT_REPO=git@github.com:konsou/instanssi2024DemoKonso.git
 
+# Capture CPU load
+load_avg=$(uptime | awk -F'[a-z]:' '{ print $2 }')
+echo "Load Average before benchmark: $load_avg" | tee -a $OUTPUT_FILENAME
+
 # Check if the lock file exists before trying to remove it
 if [ -e /tmp/.X99-lock ]; then
   echo "Cleaning up Xvfb display 99"
@@ -42,7 +46,7 @@ current_frames=$(parse_frame_count $OUTPUT_FILENAME)
 # Calculate the difference and append to the log
 difference=$((current_frames - baseline_frames))
 percentage_change=$(echo "scale=2; ($current_frames - $baseline_frames) / $baseline_frames * 100" | bc)
-echo "Difference from baseline: $difference frames ($percentage_change%)" >> $OUTPUT_FILENAME
+echo "Difference from baseline: $difference frames ($percentage_change%)" | tee -a $OUTPUT_FILENAME
 
 # Push results
 git add $OUTPUT_FILENAME
