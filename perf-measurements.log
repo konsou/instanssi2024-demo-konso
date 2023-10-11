@@ -54,3 +54,18 @@ Frame count: 8589
 Average FPS: 143.14046
 Finished.
 Difference from baseline: -199 frames (-2.00%)
+Load Average before benchmark:  0.00, 0.07, 0.12
+--------------------------
+commit cf6132f171a8600bdd28a039ea7151f18158a433
+Author: stress-erkki <tomi.javanainen+stress-erkki@gmail.com>
+Date:   Wed Oct 11 22:24:58 2023 +0300
+
+    Perf measure
+Automatic benchmark mode
+Setting benchmark runtime to 60 seconds
+Setting FPS limit to 999
+Runtime:     60001 ms
+Frame count: 8791
+Average FPS: 146.51422
+Finished.
+Difference from baseline: 3 frames (0%)
