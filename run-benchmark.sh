@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-set -x  # Turn on command echoing
-
 # processing-java should be in PATH
 # Xvfb should be installed for pseudo-display
 RUNTIME_SECONDS=60
@@ -16,3 +14,6 @@ sudo Xvfb :99 & # Start Xvfb on display 99
 export DISPLAY=:99.0
 
 processing-java --sketch=$(pwd) --run auto-benchmark $RUNTIME_SECONDS $FPS_CAP
+
+# Clean up Xvfb
+sudo pkill -f "Xvfb :99"
