@@ -1,6 +1,8 @@
 // Benchmarking
-final boolean BENCHMARK_MODE = true;
-final int BENCHMARK_RUNTIME_MS = 10000;
+boolean BENCHMARK_MODE = true;
+int BENCHMARK_RUNTIME_MS = 10000;
+int FPS_CAP = 60;
+int BENCHMARK_FPS_CAP = 999;
 
 // Two grid arrays that are reused
 boolean[] PRIMARY_GRID;
@@ -17,7 +19,7 @@ final color ALMOST_BLACK = color(39, 39, 39);
 final color ALMOST_WHITE = color(240, 240, 240);
 
 final color[] ALIVE_COLORS = { LIGHTER_GREEN, MAIN_COLOR_GREEN, DARKER_GREEN};
-final int[] ALIVE_COLOR_WEIGHTS = { 5, 1, 1 };
+final int[] ALIVE_COLOR_WEIGHTS = { 5, 1, 0 };
 color[] weightedAliveColors;
 
 final color DEAD_COLOR = ALMOST_BLACK;
@@ -39,6 +41,28 @@ void setup() {
   HALF_WIDTH = width / 2;
   HALF_HEIGHT = height / 2;
   CAMERA_DEFAULT_Z = (height/2.0) / tan(PI*30.0 / 180.0);
+  
+  // Process command line args
+  if (args != null){ 
+    if (args[0].equals("auto-benchmark")){
+        println("Automatic benchmark mode");
+        BENCHMARK_MODE = true;
+        try {
+          BENCHMARK_RUNTIME_MS = Integer.parseInt(args[1]) * 1000;          
+          println("Setting benchmark runtime to " + BENCHMARK_RUNTIME_MS / 1000 + " seconds");
+        } catch (Exception e) {
+          println("Error: Benchmark runtime not set or invalid, exiting");
+          exit();
+        }
+        try {
+          BENCHMARK_FPS_CAP = Integer.parseInt(args[2]);          
+          println("Setting FPS limit to " + BENCHMARK_FPS_CAP);
+        } catch (Exception e) {
+          println("Error: Benchmark FPS cap not set or invalid, exiting");
+          exit();
+        }
+      }
+  }
 
   weightedAliveColors = constructWeightedColors(ALIVE_COLORS, ALIVE_COLOR_WEIGHTS);
 
@@ -50,13 +74,16 @@ void setup() {
   hint(ENABLE_STROKE_PURE);
   strokeWeight(pixelSize);
   strokeCap(ROUND);
-  frameRate(999);
+  if (BENCHMARK_MODE){ frameRate(BENCHMARK_FPS_CAP); }
+  else { frameRate(FPS_CAP); }
 }
 
 void draw() {
   if (BENCHMARK_MODE && millis() > BENCHMARK_RUNTIME_MS) {
     float avgFPS = float(frameCount) / float(millis()) * 1000.0;
-    println("Ran for " + BENCHMARK_RUNTIME_MS + " ms, Frame Count: " + frameCount + " avg FPS: " + avgFPS);
+    println("Runtime:     " + millis() + " ms");
+    println("Frame count: " + frameCount);
+    println("Average FPS: " + avgFPS);
     exit();
   }
   /*
@@ -192,8 +219,10 @@ color[] constructWeightedColors(color[] colors, int[] weights) {
     int currentIndex = 0;
 
     for (int i = 0; i < colors.length; i++) {
-        for (int j = 0; j < weights[i]; j++) {
-            result[currentIndex++] = colors[i];
+        int end = currentIndex + weights[i];
+        while (currentIndex < end) {
+            result[currentIndex] = colors[i];
+            currentIndex++;
         }
     }
     
