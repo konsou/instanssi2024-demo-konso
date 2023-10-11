@@ -5,21 +5,39 @@ final int BENCHMARK_RUNTIME_MS = 10000;
 final boolean ALIVE = true;
 final boolean DEAD = false;
 
-color RED = color(255, 0, 0);
-color GREEN = color(0, 255, 0);
-color BLUE = color(0, 0, 255);
-color BLACK = color(0, 0, 0);
+// Palette
+final color MAIN_COLOR_GREEN = color(48, 178, 71);
+final color LIGHTER_GREEN = color(96, 255, 124);
+final color DARKER_GREEN = color(0, 100, 17);
+final color ALMOST_BLACK = color(39, 39, 39);
+final color ALMOST_WHITE = color(240, 240, 240);
 
-color ALIVE_COLOR = GREEN;
-color DEAD_COLOR = BLACK;
+final color ALIVE_COLOR = LIGHTER_GREEN;
+final color DEAD_COLOR = ALMOST_BLACK;
+final color BACKGROUND_COLOR = ALMOST_BLACK;
+
+final color[] ALIVE_COLORS = { LIGHTER_GREEN, MAIN_COLOR_GREEN, DARKER_GREEN};
+final int[] ALIVE_COLOR_WEIGHTS = { 5, 1, 1 };
+
+color[] weightedAliveColors;
 
 int pixelSize;
 int gridSizeX = 192;
 int gridSizeY = 108;
 int gridCellCount = gridSizeX * gridSizeY;
 
+float HALF_WIDTH;
+float HALF_HEIGHT;
+float CAMERA_DEFAULT_Z;
+
 void setup() {
   size(1920, 1080);
+  HALF_WIDTH = width / 2;
+  HALF_HEIGHT = height / 2;
+  CAMERA_DEFAULT_Z = (height/2.0) / tan(PI*30.0 / 180.0);
+
+  weightedAliveColors = constructWeightedColors(ALIVE_COLORS, ALIVE_COLOR_WEIGHTS);
+
   // Only supports "pixels" that have the same length and height
   pixelSize = width / gridSizeX;
   grid = initGrid(gridSizeX, gridSizeY);
@@ -27,7 +45,7 @@ void setup() {
   hint(ENABLE_STROKE_PURE);
   strokeWeight(pixelSize);
   strokeCap(ROUND);
-  frameRate(999);
+  frameRate(10);
 }
 
 void draw() {
@@ -36,8 +54,13 @@ void draw() {
     println("Ran for " + BENCHMARK_RUNTIME_MS + " ms, Frame Count: " + frameCount + " avg FPS: " + avgFPS);
     exit();
   }
+  camera(
+    frameCount % 100, HALF_HEIGHT, CAMERA_DEFAULT_Z, 
+    HALF_WIDTH, HALF_HEIGHT, 0,
+    0, 1, 0
+    );
 
-  background(BLACK);
+  background(BACKGROUND_COLOR);
   grid = processLife(grid);
   
   for (int i = 0; i < gridCellCount; i++) {
@@ -52,7 +75,7 @@ void displayCell(int x, int y, boolean isAlive) {
   float cellCenterY = (y * pixelSize) + (pixelSize / 2);
 
   if (isAlive) {
-    stroke(ALIVE_COLOR);
+    stroke(randomAliveColor());
     point(cellCenterX, cellCenterY);
   }
 }
@@ -128,4 +151,26 @@ int indexToX(int index) {
 
 int indexToY(int index, int x) {
   return index - (x * gridSizeY);
+}
+
+color[] constructWeightedColors(color[] colors, int[] weights) {
+    int totalWeights = 0;
+    for (int weight : weights) {
+        totalWeights += weight;
+    }
+    
+    color[] result = new color[totalWeights];
+    int currentIndex = 0;
+
+    for (int i = 0; i < colors.length; i++) {
+        for (int j = 0; j < weights[i]; j++) {
+            result[currentIndex++] = colors[i];
+        }
+    }
+    
+    return result;
+}
+
+color randomAliveColor() {
+  return weightedAliveColors[int(random(weightedAliveColors.length))];
 }
