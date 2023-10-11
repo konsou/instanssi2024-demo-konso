@@ -24,3 +24,17 @@ Runtime:     60004 ms
 Frame count: 8728
 Average FPS: 145.45697
 Finished.
+--------------------------
+commit 7984a44b71076d37d063f358c69ca5ad510a8c66
+Author: Tomi Javanainen <tomi.javanainen@gmail.com>
+Date:   Wed Oct 11 22:12:20 2023 +0300
+
+    Add baseline comparison to benchmark results
+Automatic benchmark mode
+Setting benchmark runtime to 60 seconds
+Setting FPS limit to 999
+Runtime:     60007 ms
+Frame count: 8569
+Average FPS: 142.8
+Finished.
+Difference from baseline: -219 frames (-2.00%)
