@@ -11,3 +11,16 @@ Runtime:     60006 ms
 Frame count: 8788
 Average FPS: 146.45203
 Finished.
+--------------------------
+commit 71876f5249053e0dc1a1a00ce7e50ee0201f8a0e
+Author: stress-erkki <tomi.javanainen+stress-erkki@gmail.com>
+Date:   Wed Oct 11 21:51:19 2023 +0300
+
+    Add benchmark info
+Automatic benchmark mode
+Setting benchmark runtime to 60 seconds
+Setting FPS limit to 999
+Runtime:     60004 ms
+Frame count: 8728
+Average FPS: 145.45697
+Finished.
