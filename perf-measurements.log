@@ -38,3 +38,19 @@ Frame count: 8569
 Average FPS: 142.8
 Finished.
 Difference from baseline: -219 frames (-2.00%)
+Load Average before benchmark:  0.00, 0.06, 0.08
+--------------------------
+commit 4df37efb8865ed5f891419449b68c6483c59163d
+Merge: 908f2c8 46cdce8
+Author: Tomi Javanainen <tomi.javanainen@gmail.com>
+Date:   Wed Oct 11 22:20:17 2023 +0300
+
+    Merge branch 'main' of https://github.com/konsou/instanssi2024-demo-konso
+Automatic benchmark mode
+Setting benchmark runtime to 60 seconds
+Setting FPS limit to 999
+Runtime:     60004 ms
+Frame count: 8589
+Average FPS: 143.14046
+Finished.
+Difference from baseline: -199 frames (-2.00%)
