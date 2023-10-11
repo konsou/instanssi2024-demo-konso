@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 # processing-java should be in PATH
 # Xvfb should be installed for pseudo-display
+#
+# Hacky fixes: run "sudo visudo" and add these lines:
+# erkki ALL=NOPASSWD: /usr/bin/Xvfb
+# erkki ALL=NOPASSWD: /bin/rm /tmp/.X99-lock
+# This prevents weird errors where rest of the script tries
+# to proceed while the sudo password prompt is in the
+# background somewhere
+
 RUNTIME_SECONDS=60
 FPS_CAP=999
 OUTPUT_FILENAME=perf-measurements.log
