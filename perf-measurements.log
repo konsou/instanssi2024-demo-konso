@@ -4,3 +4,22 @@ Author: stress-erkki <tomi.javanainen+stress-erkki@gmail.com>
 Date:   Wed Oct 11 21:48:15 2023 +0300
 
     Fix pushing
+--------------------------
+commit 80f6a7354fda234cb469c5e4b4f4a632c281162f
+Author: stress-erkki <tomi.javanainen+stress-erkki@gmail.com>
+Date:   Wed Oct 11 21:48:36 2023 +0300
+
+    Add benchmark info
+--------------------------
+commit 80f6a7354fda234cb469c5e4b4f4a632c281162f
+Author: stress-erkki <tomi.javanainen+stress-erkki@gmail.com>
+Date:   Wed Oct 11 21:48:36 2023 +0300
+
+    Add benchmark info
+Automatic benchmark mode
+Setting benchmark runtime to 60 seconds
+Setting FPS limit to 999
+Runtime:     60006 ms
+Frame count: 8788
+Average FPS: 146.45203
+Finished.
