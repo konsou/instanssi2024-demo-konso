@@ -1,45 +1,17 @@
 import processing.core.*;
 
 public class Instanssi2024DemoKonso extends PApplet{
-    // Benchmarking
-    boolean BENCHMARK_MODE = true;
-    int BENCHMARK_RUNTIME_MS = 10000;
-    int FPS_CAP = 60;
-    int BENCHMARK_FPS_CAP = 999;
-    int DRAW_STARTED_AT_MS = -1;
-    int DRAW_STARTED_AT_FRAMES = -1;
-
     // Two grid arrays that are reused
     boolean[] PRIMARY_GRID;
     boolean[] SECONDARY_GRID;
 
-    final boolean ALIVE = true;
-    final boolean DEAD = false;
+    public int DRAW_STARTED_AT_MS = -1;
+    public int DRAW_STARTED_AT_FRAMES = -1;
 
-    // Palette
-    final int MAIN_COLOR_GREEN = color(48, 178, 71);
-    final int LIGHTER_GREEN = color(96, 255, 124);
-    final int DARKER_GREEN = color(0, 100, 17);
-    final int ALMOST_BLACK = color(39, 39, 39);
-    final int ALMOST_WHITE = color(240, 240, 240);
 
-    final int[] ALIVE_COLORS = { LIGHTER_GREEN, MAIN_COLOR_GREEN, DARKER_GREEN};
-    final int[] ALIVE_COLOR_WEIGHTS = { 5, 1, 0 };
-    int[] weightedAliveColors;
-
-    final int DEAD_COLOR = ALMOST_BLACK;
-    final int BACKGROUND_COLOR = ALMOST_BLACK;
-
-    // Grid size
-    int pixelSize;
-    int gridSizeX = 192;
-    int gridSizeY = 108;
-    int gridCellCount = gridSizeX * gridSizeY;
-
-    // TODO: Camera control
-    double HALF_WIDTH;
-    double HALF_HEIGHT;
-    double CAMERA_DEFAULT_Z;
+    Colors colors;
+    // Instantiating Settings here since settings() needs it
+    Settings settings = new Settings();
 
     public static void main(String[] args) {
         String[] appletArgs = new String[args.length + 1];
@@ -50,30 +22,29 @@ public class Instanssi2024DemoKonso extends PApplet{
 
     @Override
     public void settings() {
-        size(1920, 1080);
+        size(settings.SCREEN_WIDTH, settings.SCREEN_HEIGHT);
     }
 
     @Override
     public void setup() {
-        HALF_WIDTH = width / 2.0;
-        HALF_HEIGHT = height / 2.0;
-        // CAMERA_DEFAULT_Z = (height/2.0) / tan(PI*30.0 / 180.0);
+        // Instantiate things here to measure loading time more accurately
+        colors = new Colors();
 
         // Process command line args
         if (args != null){
             if (args[0].equals("auto-benchmark")){
                 println("Automatic benchmark mode");
-                BENCHMARK_MODE = true;
+                settings.BENCHMARK_MODE = true;
                 try {
-                    BENCHMARK_RUNTIME_MS = Integer.parseInt(args[1]) * 1000;
-                    println("Setting benchmark runtime to " + BENCHMARK_RUNTIME_MS / 1000 + " seconds");
+                    settings.BENCHMARK_RUNTIME_MS = Integer.parseInt(args[1]) * 1000;
+                    println("Setting benchmark runtime to " + settings.BENCHMARK_RUNTIME_MS / 1000 + " seconds");
                 } catch (Exception e) {
                     println("Error: Benchmark runtime not set or invalid, exiting");
                     exit();
                 }
                 try {
-                    BENCHMARK_FPS_CAP = Integer.parseInt(args[2]);
-                    println("Setting FPS limit to " + BENCHMARK_FPS_CAP);
+                    settings.BENCHMARK_FPS_CAP = Integer.parseInt(args[2]);
+                    println("Setting FPS limit to " + settings.BENCHMARK_FPS_CAP);
                 } catch (Exception e) {
                     println("Error: Benchmark FPS cap not set or invalid, exiting");
                     exit();
@@ -81,27 +52,23 @@ public class Instanssi2024DemoKonso extends PApplet{
             }
         }
 
-        weightedAliveColors = constructWeightedColors(ALIVE_COLORS, ALIVE_COLOR_WEIGHTS);
-
-        // Only supports "pixels" that have the same length and height
-        pixelSize = width / gridSizeX;
-        PRIMARY_GRID = initGrid(gridSizeX, gridSizeY);
-        SECONDARY_GRID = initGrid(gridSizeX, gridSizeY);
+        PRIMARY_GRID = initGrid(settings.gridSizeX, settings.gridSizeY);
+        SECONDARY_GRID = initGrid(settings.gridSizeX, settings.gridSizeY);
 
         hint(ENABLE_STROKE_PURE);
-        strokeWeight(pixelSize);
+        strokeWeight(settings.pixelSize);
         strokeCap(ROUND);
-        if (BENCHMARK_MODE){ frameRate(BENCHMARK_FPS_CAP); }
-        else { frameRate(FPS_CAP); }
+        if (settings.BENCHMARK_MODE){ frameRate(settings.BENCHMARK_FPS_CAP); }
+        else { frameRate(settings.FPS_CAP); }
     }
 
     @Override
     public void draw() {
         if (DRAW_STARTED_AT_MS == -1){ DRAW_STARTED_AT_MS = millis(); }
         if (DRAW_STARTED_AT_FRAMES == -1){ DRAW_STARTED_AT_FRAMES = frameCount; }
-        if (BENCHMARK_MODE && drawMillis() >= BENCHMARK_RUNTIME_MS) { printBenchmarkStatsAndExit(); }
+        if (settings.BENCHMARK_MODE && drawMillis() >= settings.BENCHMARK_RUNTIME_MS) { printBenchmarkStatsAndExit(); }
 
-        background(BACKGROUND_COLOR);
+        background(colors.BACKGROUND_COLOR);
 
         boolean[] currentGrid, newGrid;
 
@@ -116,7 +83,7 @@ public class Instanssi2024DemoKonso extends PApplet{
         // processLife modifies newGrid
         processLife(currentGrid, newGrid);
 
-        for (int i = 0; i < gridCellCount; i++) {
+        for (int i = 0; i < newGrid.length; i++) {
             int x = indexToX(i);
             int y = indexToY(i, x);
             displayCell(x, y, newGrid[i]);
@@ -124,11 +91,11 @@ public class Instanssi2024DemoKonso extends PApplet{
     }
 
     void displayCell(int x, int y, boolean isAlive) {
-        float cellCenterX = (x * pixelSize) + ((float) pixelSize / 2);
-        float cellCenterY = (y * pixelSize) + ((float) pixelSize / 2);
+        float cellCenterX = (x * settings.pixelSize) + ((float) settings.pixelSize / 2);
+        float cellCenterY = (y * settings.pixelSize) + ((float) settings.pixelSize / 2);
 
         if (isAlive) {
-            stroke(randomAliveColor());
+            stroke(colors.randomAliveColor());
             point(cellCenterX, cellCenterY);
         }
     }
@@ -145,7 +112,7 @@ public class Instanssi2024DemoKonso extends PApplet{
      * @param newGrid     An array where the next state of the Game of Life will be written.
      */
     void processLife(boolean[] currentGrid, boolean[] newGrid) {
-        for (int i = 0; i < gridCellCount; i++) {
+        for (int i = 0; i < currentGrid.length; i++) {
             int x = indexToX(i);
             int y = indexToY(i, x);
             int aliveNeighbours = getAliveNeighbours(x, y, currentGrid);
@@ -155,9 +122,9 @@ public class Instanssi2024DemoKonso extends PApplet{
     }
 
     boolean computeNewState(boolean currentState, int aliveNeighbours) {
-        if (currentState == DEAD && aliveNeighbours == 3) return ALIVE;
-        if (currentState == ALIVE && (aliveNeighbours == 2 || aliveNeighbours == 3)) return ALIVE;
-        return DEAD;
+        if (currentState == settings.DEAD && aliveNeighbours == 3) return settings.ALIVE;
+        if (currentState == settings.ALIVE && (aliveNeighbours == 2 || aliveNeighbours == 3)) return settings.ALIVE;
+        return settings.DEAD;
     }
 
     int[] neighbourXOffsets = {
@@ -180,7 +147,7 @@ public class Instanssi2024DemoKonso extends PApplet{
 
             if (
                     isInsideGrid(neighbourX, neighbourY) &&
-                            grid[xyToIndex(neighbourX, neighbourY)] == ALIVE
+                            grid[xyToIndex(neighbourX, neighbourY)] == settings.ALIVE
             ) {
                 aliveNeighbours++;
                 if (aliveNeighbours >= 4) return aliveNeighbours;  // Optimize for game of life rules
@@ -191,53 +158,29 @@ public class Instanssi2024DemoKonso extends PApplet{
     }
 
     boolean isInsideGrid(int x, int y) {
-        return !(x < 0 || x >= gridSizeX || y < 0 || y >= gridSizeY);
+        return !(x < 0 || x >= settings.gridSizeX || y < 0 || y >= settings.gridSizeY);
     }
 
     boolean[] initGrid(int width, int height) {
         boolean[] newGrid = new boolean[width * height];
 
-        for (int i = 0; i < gridCellCount; i++) {
-            newGrid[i] = (i % 4 == 0) ? ALIVE : DEAD;
+        for (int i = 0; i < newGrid.length; i++) {
+            newGrid[i] = (i % 4 == 0) ? settings.ALIVE : settings.DEAD;
         }
 
         return newGrid;
     }
 
     int xyToIndex(int x, int y) {
-        return x * gridSizeY + y;
+        return x * settings.gridSizeY + y;
     }
 
     int indexToX(int index) {
-        return index / gridSizeY;
+        return index / settings.gridSizeY;
     }
 
     int indexToY(int index, int x) {
-        return index - (x * gridSizeY);
-    }
-
-    int[] constructWeightedColors(int[] colors, int[] weights) {
-        int totalWeights = 0;
-        for (int weight : weights) {
-            totalWeights += weight;
-        }
-
-        int[] result = new int[totalWeights];
-        int currentIndex = 0;
-
-        for (int i = 0; i < colors.length; i++) {
-            int end = currentIndex + weights[i];
-            while (currentIndex < end) {
-                result[currentIndex] = colors[i];
-                currentIndex++;
-            }
-        }
-
-        return result;
-    }
-
-    int randomAliveColor() {
-        return weightedAliveColors[(int)(random(weightedAliveColors.length))];
+        return index - (x * settings.gridSizeY);
     }
 
     /**
