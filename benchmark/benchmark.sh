@@ -10,14 +10,6 @@
 #
 # requires: java 17 jdk
 # Xvfb should be installed for pseudo-display
-#
-# Hacky fixes: run "sudo visudo" and add these lines:
-# erkki ALL=NOPASSWD: /usr/bin/Xvfb
-# erkki ALL=NOPASSWD: /bin/rm /tmp/.X99-lock
-# erkki ALL=NOPASSWD: pkill -f "Xvfb :99"
-# This prevents weird errors where rest of the script tries
-# to proceed while the sudo password prompt is in the
-# background somewhere
 
 RUNTIME_SECONDS=60
 FPS_CAP=999
@@ -27,6 +19,9 @@ PROJECT_ROOT="${SCRIPT_DIR%/*}"
 OUTPUT_FILENAME="${RESULT_DIR}/benchmark.log"
 BASELINE_FILENAME="${RESULT_DIR}/benchmark-baseline.log"
 LOCK_FILE="/tmp/konso-demo-benchmark.lock"
+
+# Xvfb display for headless operation
+export DISPLAY=:99.0
 
 SKIP_LOCK=${1:-"false"}
 
@@ -45,15 +40,6 @@ load_avg=$(uptime | awk -F'[a-z]:' '{ print $2 }')
 # Compile
 echo "Compiling"
 javac -classpath "${PROJECT_ROOT}/lib/core.jar" -d "${PROJECT_ROOT}/out/" "${PROJECT_ROOT}/src/Instanssi2024DemoKonso.java"
-
-# Check if the lock file exists before trying to remove it
-if [ -e /tmp/.X99-lock ]; then
-  echo "Cleaning up Xvfb display 99"
-  sudo rm /tmp/.X99-lock
-fi
-
-sudo Xvfb :99 & # Start Xvfb on display 99
-export DISPLAY=:99.0
 
 parse_frame_count() {
   local log_filename=$1
@@ -80,9 +66,6 @@ echo "Difference from baseline: $difference frames ($percentage_change%)" | tee 
 git add "${OUTPUT_FILENAME}"
 git commit -m "Add benchmark info"
 git push
-
-# Clean up Xvfb
-sudo "${SCRIPT_DIR}/kill_xvfb.sh"
 
 # Only remove lockfile if not skipping lock checks
 if [ "${SKIP_LOCK}" != "skip-lock" ]; then
