@@ -40,14 +40,14 @@ public class Instanssi2024DemoKonso extends PApplet{
                     println("Setting benchmark runtime to " + settings.BENCHMARK_RUNTIME_MS / 1000 + " seconds");
                 } catch (Exception e) {
                     println("Error: Benchmark runtime not set or invalid, exiting");
-                    exit();
+                    System.exit(1);
                 }
                 try {
                     settings.BENCHMARK_FPS_CAP = Integer.parseInt(args[2]);
                     println("Setting FPS limit to " + settings.BENCHMARK_FPS_CAP);
                 } catch (Exception e) {
                     println("Error: Benchmark FPS cap not set or invalid, exiting");
-                    exit();
+                    System.exit(1);
                 }
             }
         }
