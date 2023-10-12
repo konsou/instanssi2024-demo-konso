@@ -4,7 +4,8 @@
 GIT_REPO_DIR="/home/erkki/instanssi2024DemoKonso"
 BENCHMARK_AUTHOR="stress-erkki"
 BENCHMARK_LOG="${GIT_REPO_DIR}/perf-measurements.log"
-WATCHER_LOG="${GIT_REPO_DIR}/benchmark-watcher.log"
+WATCHER_LOG_DIR="${GIT_REPO_DIR}/log"
+WATCHER_LOG="${WATCHER_LOG_DIR}/benchmark-watcher.log"
 LOCK_FILE="/tmp/konso-demo-benchmark.lock"
 
 # log_with_timestamp [COMMIT_HASH]
@@ -24,6 +25,8 @@ log_with_timestamp() {
         fi
     done
 }
+
+mkdir -p ${WATCHER_LOG_DIR}
 
 # Check for lock file to determine if another instance of this script or benchmark is running
 if [ -e "${LOCK_FILE}" ]; then
