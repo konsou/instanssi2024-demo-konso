@@ -257,3 +257,11 @@ Date:   Thu Oct 12 16:59:29 2023 +0300
     Exit on errors
 Load Average before benchmark:  0.00, 0.02, 0.00
 Difference from baseline: -87 frames (0%)
+--------------------------
+commit 9136d1116b7d60adb85a142b936e3ab14bfb07e9
+Author: stress-erkki <tomi.javanainen+stress-erkki@gmail.com>
+Date:   Thu Oct 12 17:00:04 2023 +0300
+
+    Add benchmark info
+Load Average before benchmark:  0.00, 0.01, 0.00
+Difference from baseline: -87 frames (0%)
