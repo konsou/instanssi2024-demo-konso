@@ -6,6 +6,8 @@ public class Instanssi2024DemoKonso extends PApplet{
     int BENCHMARK_RUNTIME_MS = 10000;
     int FPS_CAP = 60;
     int BENCHMARK_FPS_CAP = 999;
+    int DRAW_STARTED_AT_MS = -1;
+    int DRAW_STARTED_AT_FRAMES = -1;
 
     // Two grid arrays that are reused
     boolean[] PRIMARY_GRID;
@@ -95,20 +97,9 @@ public class Instanssi2024DemoKonso extends PApplet{
 
     @Override
     public void draw() {
-        if (BENCHMARK_MODE && millis() > BENCHMARK_RUNTIME_MS) {
-            float avgFPS = (float) ((float) frameCount / millis() * 1000.0);
-            println("Runtime:     " + millis() + " ms");
-            println("Frame count: " + frameCount);
-            println("Average FPS: " + avgFPS);
-            exit();
-        }
-        /*
-        camera(
-        frameCount % 100, HALF_HEIGHT, CAMERA_DEFAULT_Z,
-        HALF_WIDTH, HALF_HEIGHT, 0,
-        0, 1, 0
-        );
-        */
+        if (DRAW_STARTED_AT_MS == -1){ DRAW_STARTED_AT_MS = millis(); }
+        if (DRAW_STARTED_AT_FRAMES == -1){ DRAW_STARTED_AT_FRAMES = frameCount; }
+        if (BENCHMARK_MODE && drawMillis() >= BENCHMARK_RUNTIME_MS) { printBenchmarkStatsAndExit(); }
 
         background(BACKGROUND_COLOR);
 
@@ -247,5 +238,30 @@ public class Instanssi2024DemoKonso extends PApplet{
 
     int randomAliveColor() {
         return weightedAliveColors[(int)(random(weightedAliveColors.length))];
+    }
+
+    /**
+     * @return number of milliseconds since first call to draw()
+     */
+    int drawMillis(){ return millis() - DRAW_STARTED_AT_MS; }
+
+    /**
+     * @return frame count from the first draw() call, starting from 1
+     */
+    int drawFrameCount(){ return frameCount - DRAW_STARTED_AT_FRAMES + 1; }
+
+    void printBenchmarkStatsAndExit(){
+        int totalRuntime = millis();
+        int drawRuntime = drawMillis();
+        int setupRuntime = totalRuntime - drawRuntime;
+        int drawFrameCount = drawFrameCount();
+        float avgDrawFPS = (float) ((float) drawFrameCount / drawRuntime * 1000.0);
+        println("Runtime (total):      " + totalRuntime + " ms");
+        println("Runtime (setup):      " + setupRuntime + " ms");
+        println("Runtime (draw):       " + drawRuntime + " ms");
+        println("Frame count (total):  " + frameCount);
+        println("Frame count (draw):   " + drawFrameCount());
+        println("Average FPS (draw):   " + avgDrawFPS);
+        exit();
     }
 }
