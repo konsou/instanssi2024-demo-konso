@@ -249,3 +249,11 @@ Date:   Thu Oct 12 16:50:04 2023 +0300
     Add benchmark info
 Load Average before benchmark:  0.00, 0.00, 0.00
 Difference from baseline: -87 frames (0%)
+--------------------------
+commit f725dbe706d26f8b7b91d5b2600d2c9859d94ba9
+Author: Tomi Javanainen <tomi.javanainen@gmail.com>
+Date:   Thu Oct 12 16:59:29 2023 +0300
+
+    Exit on errors
+Load Average before benchmark:  0.00, 0.02, 0.00
+Difference from baseline: -87 frames (0%)
