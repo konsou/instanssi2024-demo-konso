@@ -15,6 +15,17 @@ FPS_CAP=999
 OUTPUT_FILENAME=perf-measurements.log
 BASELINE_FILENAME=perf-baseline.log
 GIT_REPO=git@github.com:konsou/instanssi2024DemoKonso.git
+LOCK_FILE="/tmp/konso-demo-benchmark.lock"
+
+
+# Check for lock file to determine if another instance of this script or benchmark is running
+if [ -e "${LOCK_FILE}" ]; then
+    echo "Another instance of the script or benchmark is running."
+    exit 0
+fi
+
+# Create a lock file
+touch "${LOCK_FILE}"
 
 # Capture CPU load
 load_avg=$(uptime | awk -F'[a-z]:' '{ print $2 }')
@@ -60,3 +71,6 @@ git push $GIT_REPO
 
 # Clean up Xvfb
 sudo ./kill_xvfb.sh
+
+# Remove lock file at the end
+rm "${LOCK_FILE}"
