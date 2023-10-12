@@ -347,3 +347,11 @@ Load Average before benchmark:  0.00, 0.00, 0.00
 2023-10-12 17:43 | 	at processing.core.PApplet.main(PApplet.java:9845)
 2023-10-12 17:43 | 	at Instanssi2024DemoKonso.main(Instanssi2024DemoKonso.java:48)
 Difference from baseline: -87 frames (0%)
+--------------------------
+commit 2416422e037effae7fc4c76fcbdea7c91f859ba5
+Author: Tomi Javanainen <tomi.javanainen@gmail.com>
+Date:   Thu Oct 12 17:48:48 2023 +0300
+
+    Fix logging???
+Load Average before benchmark:  0.00, 0.00, 0.00
+Running benchmark failed
