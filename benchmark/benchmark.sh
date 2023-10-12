@@ -14,14 +14,24 @@
 RUNTIME_SECONDS=60
 FPS_CAP=999
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
+DOTENV_FILE="${SCRIPT_DIR}/.env"
 RESULT_DIR="${SCRIPT_DIR}/results"
 PROJECT_ROOT="${SCRIPT_DIR%/*}"
 OUTPUT_FILENAME="${RESULT_DIR}/benchmark.log"
 BASELINE_FILENAME="${RESULT_DIR}/benchmark-baseline.log"
 LOCK_FILE="/tmp/konso-demo-benchmark.lock"
 
+# Load configurations from .env
+export "$(grep -v '^#' "${DOTENV_FILE}" | xargs)"
+
+if [ -z "${XVFB_DISPLAY_NUM}" ]; then
+    echo "Error: XVFB_DISPLAY_NUM is not set in ${DOTENV_FILE}." >&2
+    exit 1
+fi
+
+
 # Xvfb display for headless operation
-export DISPLAY=:99.0
+export DISPLAY=XVFB_DISPLAY_NUM
 
 SKIP_LOCK=${1:-"false"}
 

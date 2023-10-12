@@ -1,5 +1,6 @@
 benchmark-watcher.log
 log/
+.env
 
 applet
 application.linux-arm64
