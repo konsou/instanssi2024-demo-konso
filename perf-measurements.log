@@ -43,3 +43,18 @@ Frame count: 8791
 Average FPS: 146.51422
 Finished.
 Difference from baseline: 3 frames (0%)
+--------------------------
+commit 8689ec84170d32b336a6c77dc7e191bd2232ef4a
+Merge: d419c1e 4444215
+Author: Tomi Javanainen <tomi.javanainen@gmail.com>
+Date:   Thu Oct 12 12:26:43 2023 +0300
+
+    Merge remote-tracking branch 'origin/main'
+Load Average before benchmark:  0.00, 0.00, 0.00
+Automatic benchmark mode
+Setting benchmark runtime to 60 seconds
+Setting FPS limit to 999
+Runtime:     60004 ms
+Frame count: 9103
+Average FPS: 151.70654
+Difference from baseline: 315 frames (3.00%)
