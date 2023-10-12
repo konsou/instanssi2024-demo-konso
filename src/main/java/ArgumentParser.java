@@ -8,7 +8,7 @@ public class ArgumentParser {
     public ArgumentParser() {
         options = new Options();
 
-        Option benchmarkMode = new Option("b", "benchmark", true, "Automatic benchmark mode");
+        Option benchmarkMode = new Option("b", "benchmark", false, "Automatic benchmark mode");
         benchmarkMode.setRequired(false);
         options.addOption(benchmarkMode);
 
@@ -16,7 +16,7 @@ public class ArgumentParser {
         runtime.setRequired(false);
         options.addOption(runtime);
 
-        Option fps = new Option("f", "fps", true, "Benchmark FPS cap");
+        Option fps = new Option("f", "fps-cap", true, "Benchmark FPS cap");
         fps.setRequired(false);
         options.addOption(fps);
     }
