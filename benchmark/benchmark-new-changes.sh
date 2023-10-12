@@ -22,9 +22,9 @@ log_with_timestamp() {
     local tag="${1:-}" # If provided, use the tag, otherwise default to an empty string
     while read -r line; do
         if [ -n "$tag" ]; then
-            echo "$(date +'%Y-%m-%d %H:%M') | $tag | $line" | tee -a $WATCHER_LOG
+            echo "$(date +'%Y-%m-%d %H:%M') | $tag | $line" | tee -a "${WATCHER_LOG}"
         else
-            echo "$(date +'%Y-%m-%d %H:%M') | | $line" | tee -a $WATCHER_LOG
+            echo "$(date +'%Y-%m-%d %H:%M') | | $line" | tee -a "${WATCHER_LOG}"
         fi
     done
 }
@@ -62,7 +62,7 @@ if [ "${LATEST_COMMIT_AUTHOR}" != "${BENCHMARK_AUTHOR}" ]; then
     echo "Starting benchmark" | log_with_timestamp "${LATEST_COMMIT_HASH}"
     # Without skip-lock, benchmark would fail due to locking
     if ! "${BENCHMARK_SCRIPT}" skip-lock; then
-        echo "Benchmark script failed" | log_with_timestamp "${LATEST_COMMIT_HASH}"
+        echo "Benchmark script failed - see ${BENCHMARK_LOG} for details" | log_with_timestamp "${LATEST_COMMIT_HASH}"
         rm "${LOCK_FILE}"
         exit 1
     fi
