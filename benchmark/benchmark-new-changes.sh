@@ -41,14 +41,16 @@ fi
 touch "${LOCK_FILE}"
 
 # Pull the newest changes from git
-cd "${GIT_REPO_DIR}" || { echo "ERROR: Can't change to GIT_REPO_DIR ${GIT_REPO_DIR}" | log_with_timestamp; exit 1; }
-git pull | log_with_timestamp GIT
+cd "${GIT_REPO_DIR}" || {
+  rm -r "${LOCK_FILE}"
+  echo "ERROR: Can't change to GIT_REPO_DIR ${GIT_REPO_DIR}" | log_with_timestamp SYSTEM
+  exit 1
+}
+git pull | log_with_timestamp GIT_PULL
 
-# Check author of the latest commit
 LATEST_COMMIT_AUTHOR=$(git log -1 --pretty=format:"%an")
-
-# Check commit hash of the latest commit
-LATEST_COMMIT_HASH=$(git rev-parse HEAD)
+LATEST_COMMIT_HASH_FULL=$(git rev-parse HEAD)
+LATEST_COMMIT_HASH=$(git rev-parse --short HEAD)
 
 # Check if the benchmark was run for this commit
 if grep -q "${LATEST_COMMIT_HASH}" "${BENCHMARK_LOG}"; then
@@ -60,9 +62,11 @@ fi
 # If the commit author is not BENCHMARK_AUTHOR, then run the benchmark
 if [ "${LATEST_COMMIT_AUTHOR}" != "${BENCHMARK_AUTHOR}" ]; then
     echo "Starting benchmark" | log_with_timestamp "${LATEST_COMMIT_HASH}"
+    echo "Full commit hash: ${LATEST_COMMIT_HASH_FULL}" | log_with_timestamp "${LATEST_COMMIT_HASH}"
     # Without skip-lock, benchmark would fail due to locking
     if ! "${BENCHMARK_SCRIPT}" skip-lock; then
         echo "Benchmark script failed - see ${BENCHMARK_LOG} for details" | log_with_timestamp "${LATEST_COMMIT_HASH}"
+        tail -n 1 "${BENCHMARK_LOG}" | log_with_timestamp "${LATEST_COMMIT_HASH}"
         rm "${LOCK_FILE}"
         exit 1
     fi
