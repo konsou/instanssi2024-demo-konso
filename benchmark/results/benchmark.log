@@ -273,3 +273,52 @@ Date:   Thu Oct 12 17:00:31 2023 +0300
     Add benchmark info
 Load Average before benchmark:  0.00, 0.01, 0.00
 Difference from baseline: -87 frames (0%)
+2023-10-12 17:27 | 
+--------------------------
+commit 4fe2f6b3a78142ca60149b3fdcde8e62ea9477e3
+Author: Tomi Javanainen <tomi.javanainen@gmail.com>
+Date:   Thu Oct 12 17:26:44 2023 +0300
+
+    Fix not exiting on java command errors
+Load Average before benchmark:  0.00, 0.00, 0.00
+2023-10-12 17:28 | 
+--------------------------
+commit 4fe2f6b3a78142ca60149b3fdcde8e62ea9477e3
+Author: Tomi Javanainen <tomi.javanainen@gmail.com>
+Date:   Thu Oct 12 17:26:44 2023 +0300
+
+    Fix not exiting on java command errors
+Load Average before benchmark:  0.05, 0.01, 0.00
+2023-10-12 17:32 | 
+--------------------------
+commit 2a379f357e34101f1bb909de308a646f3f6262f9
+Author: Tomi Javanainen <tomi.javanainen@gmail.com>
+Date:   Thu Oct 12 17:31:14 2023 +0300
+
+    Delete lockfile on exit
+Load Average before benchmark:  0.00, 0.00, 0.00
+--------------------------
+commit 4848bddeb2657b4e5ce85655c269ba3c6deda812
+Author: Tomi Javanainen <tomi.javanainen@gmail.com>
+Date:   Thu Oct 12 17:37:49 2023 +0300
+
+    Fix logging?
+Load Average before benchmark:  0.00, 0.00, 0.00
+2023-10-12 17:38 | java.awt.AWTError: Can't connect to X11 window server using 'XVFB_DISPLAY_NUM' as the value of the DISPLAY variable.
+2023-10-12 17:38 | 	at java.desktop/sun.awt.X11GraphicsEnvironment.initDisplay(Native Method)
+2023-10-12 17:38 | 	at java.desktop/sun.awt.X11GraphicsEnvironment$1.run(X11GraphicsEnvironment.java:105)
+2023-10-12 17:38 | 	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318)
+2023-10-12 17:38 | 	at java.desktop/sun.awt.X11GraphicsEnvironment.initStatic(X11GraphicsEnvironment.java:64)
+2023-10-12 17:38 | 	at java.desktop/sun.awt.X11GraphicsEnvironment.<clinit>(X11GraphicsEnvironment.java:59)
+2023-10-12 17:38 | 	at java.desktop/sun.awt.PlatformGraphicsInfo.createGE(PlatformGraphicsInfo.java:36)
+2023-10-12 17:38 | 	at java.desktop/java.awt.GraphicsEnvironment$LocalGE.createGE(GraphicsEnvironment.java:93)
+2023-10-12 17:38 | 	at java.desktop/java.awt.GraphicsEnvironment$LocalGE.<clinit>(GraphicsEnvironment.java:84)
+2023-10-12 17:38 | 	at java.desktop/java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment(GraphicsEnvironment.java:106)
+2023-10-12 17:38 | 	at java.desktop/sun.awt.X11.XToolkit.<clinit>(XToolkit.java:224)
+2023-10-12 17:38 | 	at java.desktop/sun.awt.PlatformGraphicsInfo.createToolkit(PlatformGraphicsInfo.java:40)
+2023-10-12 17:38 | 	at java.desktop/java.awt.Toolkit.getDefaultToolkit(Toolkit.java:599)
+2023-10-12 17:38 | 	at processing.awt.ShimAWT.initRun(ShimAWT.java:695)
+2023-10-12 17:38 | 	at processing.core.PApplet.runSketch(PApplet.java:10058)
+2023-10-12 17:38 | 	at processing.core.PApplet.main(PApplet.java:9845)
+2023-10-12 17:38 | 	at Instanssi2024DemoKonso.main(Instanssi2024DemoKonso.java:48)
+Difference from baseline: -87 frames (0%)
