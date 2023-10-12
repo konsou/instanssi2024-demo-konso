@@ -50,11 +50,13 @@ if [ "${SKIP_LOCK}" != "skip-lock" ] && [ -e "${LOCK_FILE}" ]; then
 fi
 
 run_and_log() {
+    local exit_status_file=$(mktemp)
     # Use tee to direct command's output to both the console and the file, capturing the command's exit status
-    if "$@" 2>&1 | tee >(sed "s/^/$(date +'%Y-%m-%d %H:%M') | /" >> "${OUTPUT_FILENAME}"); then
-        return 0
-    else
-        local cmd_status=$?
+    "$@" 2>&1 | tee >(sed "s/^/$(date +'%Y-%m-%d %H:%M') | /" >> "${OUTPUT_FILENAME}"; echo "${PIPESTATUS[0]}" > "$exit_status_file")
+    local cmd_status=$(cat "$exit_status_file")
+    rm -f "$exit_status_file"
+
+    if [ $cmd_status -ne 0 ]; then
         echo "Error executing: $*" >&2
         if [ "${SKIP_LOCK}" != "skip-lock" ]; then
           rm -f "${LOCK_FILE}"
