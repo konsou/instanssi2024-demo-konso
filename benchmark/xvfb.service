@@ -1,0 +1,18 @@
+# First set the ExecStart path below
+# Then copy this file to /etc/systemd/system/xvfb.service
+# then run:
+# sudo systemctl daemon-reload
+# sudo systemctl enable xvfb.service
+# sudo systemctl start xvfb.service
+[Unit]
+Description=X Virtual Frame Buffer Service
+After=network.target
+
+[Service]
+ExecStart=/CORRECT/PATH/HERE/start-xvfb.sh
+User=root
+Restart=always
+Environment=DISPLAY=$XVFB_DISPLAY_NUM
+
+[Install]
+WantedBy=multi-user.target
