@@ -39,7 +39,7 @@ if [ -z "${XVFB_DISPLAY_NUM}" ]; then
 fi
 
 # Xvfb display for headless operation
-export DISPLAY=XVFB_DISPLAY_NUM
+export DISPLAY="${XVFB_DISPLAY_NUM}"
 
 SKIP_LOCK=${1:-"false"}
 
