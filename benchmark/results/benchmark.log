@@ -794,3 +794,21 @@ Frame count (total):  9089
 Frame count (draw):   9089
 Average FPS (draw):   151.47829
 Difference from baseline: -122 frames (-1.00%)
+--------------------------
+Benchmark started at 2023-10-12 22:32
+commit 6f97e39bc2e9be0bac871bc6b28412635fa65b10
+Author: Tomi Javanainen <tomi.javanainen@gmail.com>
+Date:   Thu Oct 12 22:31:53 2023 +0300
+
+    Fix building to use maven
+Load Average before benchmark:  0.00, 0.00, 0.00
+Automatic benchmark mode
+Setting benchmark runtime to 60 seconds
+Setting FPS limit to 999
+Runtime (total):      60171 ms
+Runtime (setup):      167 ms
+Runtime (draw):       60004 ms
+Frame count (total):  9108
+Frame count (draw):   9108
+Average FPS (draw):   151.78987
+Difference from baseline: -103 frames (-1.00%)
