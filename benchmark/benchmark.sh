@@ -72,7 +72,7 @@ git log -1 >> "${OUTPUT_FILENAME}"
 
 # Compile
 echo "Compiling"
-javac -classpath "${PROJECT_ROOT}/lib/core.jar" -d "${PROJECT_ROOT}/out/" "${PROJECT_ROOT}/src/Instanssi2024DemoKonso.java" 2>&1 | tee -a "${OUTPUT_FILENAME}"
+(cd "${PROJECT_ROOT}/src" && javac -classpath "${PROJECT_ROOT}/lib/core.jar" -d "${PROJECT_ROOT}/out/" *.java) 2>&1 | tee -a "${OUTPUT_FILENAME}"
 # Check the exit status of the java command, not the tee
 if [ "${PIPESTATUS[0]}" -ne 0 ]; then
     echo "Compiling failed" | tee -a "${OUTPUT_FILENAME}"
