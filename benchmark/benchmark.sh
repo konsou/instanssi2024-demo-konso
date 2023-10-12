@@ -50,19 +50,12 @@ if [ "${SKIP_LOCK}" != "skip-lock" ] && [ -e "${LOCK_FILE}" ]; then
 fi
 
 run_and_log() {
-    local cmd_output
-    cmd_output=$("$@" 2>&1) # Run the command and capture its output
-    local cmd_status=$?
-
-    # Print the command's output to stdout
-    echo "$cmd_output"
-
-    # Append the command's output to our OUTPUT_FILENAME
-    echo "$(date +'%Y-%m-%d %H:%M') | $cmd_output" >> "${OUTPUT_FILENAME}"
-
-    # If the command failed, exit
-    if [ $cmd_status -ne 0 ]; then
-        echo "Error executing: $*"
+    # Use tee to direct command's output to both the console and the file, capturing the command's exit status
+    if "$@" 2>&1 | tee >(sed "s/^/$(date +'%Y-%m-%d %H:%M') | /" >> "${OUTPUT_FILENAME}"); then
+        return 0
+    else
+        local cmd_status=$?
+        echo "Error executing: $*" >&2
         if [ "${SKIP_LOCK}" != "skip-lock" ]; then
           rm -f "${LOCK_FILE}"
         fi
