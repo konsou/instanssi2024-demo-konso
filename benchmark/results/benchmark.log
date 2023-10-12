@@ -207,3 +207,12 @@ Frame count (total):  9124
 Frame count (draw):   9124
 Average FPS (draw):   152.05653
 Difference from baseline: -87 frames (0%)
+--------------------------
+commit 9bbe73a6baedfdac3cac9a4a3da9c6d3505c8bd7
+Merge: 5e321fc 8cf08bd
+Author: Tomi Javanainen <tomi.javanainen@gmail.com>
+Date:   Thu Oct 12 16:38:33 2023 +0300
+
+    Merge remote-tracking branch 'origin/main'
+Load Average before benchmark:  0.00, 0.00, 0.00
+Difference from baseline: -87 frames (0%)
