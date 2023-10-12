@@ -21,7 +21,7 @@ LOCK_FILE="/tmp/konso-demo-benchmark.lock"
 # Check for lock file to determine if another instance of this script or benchmark is running
 if [ -e "${LOCK_FILE}" ]; then
     echo "Another instance of the script or benchmark is running."
-    exit 0
+    exit 1
 fi
 
 # Create a lock file
