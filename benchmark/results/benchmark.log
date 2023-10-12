@@ -739,3 +739,22 @@ Frame count (total):  9039
 Frame count (draw):   9039
 Average FPS (draw):   150.64749
 Difference from baseline: -172 frames (-1.00%)
+Error: No configurations found in /home/erkki/instanssi2024DemoKonso/benchmark/.env.
+--------------------------
+Benchmark started at 2023-10-12 20:31
+commit 62429f408c244a36d6891588cbbf15c2b482f566
+Author: Tomi Javanainen <tomi.javanainen@gmail.com>
+Date:   Thu Oct 12 20:28:45 2023 +0300
+
+    Add dummy file
+Load Average before benchmark:  0.00, 0.09, 0.08
+Automatic benchmark mode
+Setting benchmark runtime to 60 seconds
+Setting FPS limit to 999
+Runtime (total):      60166 ms
+Runtime (setup):      164 ms
+Runtime (draw):       60002 ms
+Frame count (total):  9067
+Frame count (draw):   9067
+Average FPS (draw):   151.11163
+Difference from baseline: -144 frames (-1.00%)
