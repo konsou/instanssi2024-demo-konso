@@ -2,6 +2,9 @@ benchmark-watcher.log
 log/
 .env
 
+# Maven
+target/
+
 applet
 application.linux-arm64
 application.linux-armv6hf
