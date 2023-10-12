@@ -225,3 +225,11 @@ Date:   Thu Oct 12 16:40:47 2023 +0300
     Merge remote-tracking branch 'origin/main'
 Load Average before benchmark:  0.00, 0.00, 0.00
 Difference from baseline: -87 frames (0%)
+--------------------------
+commit 73df737730e6420e15230c8d6ff9581c18cc24c7
+Author: stress-erkki <tomi.javanainen+stress-erkki@gmail.com>
+Date:   Thu Oct 12 16:41:03 2023 +0300
+
+    Add benchmark info
+Load Average before benchmark:  0.00, 0.00, 0.00
+Difference from baseline: -87 frames (0%)
