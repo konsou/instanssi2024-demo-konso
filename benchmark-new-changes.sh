@@ -16,12 +16,12 @@ LOCK_FILE="/tmp/konso-demo-benchmark.lock"
 #     echo "This is my log message" | log_with_timestamp
 #     echo "This is a message with a commit hash" | log_with_timestamp "abcd1234"
 log_with_timestamp() {
-    local commit_hash="${1:-}" # If provided, use the commit hash, otherwise default to an empty string
+    local tag="${1:-}" # If provided, use the commit hash, otherwise default to an empty string
     while read -r line; do
-        if [ -n "$commit_hash" ]; then
-            echo "$(date +'%Y-%m-%d %H:%M') | $commit_hash | $line" | tee -a $WATCHER_LOG
+        if [ -n "$tag" ]; then
+            echo "$(date +'%Y-%m-%d %H:%M') | $tag | $line" | tee -a $WATCHER_LOG
         else
-            echo "$(date +'%Y-%m-%d %H:%M') | $line" | tee -a $WATCHER_LOG
+            echo "$(date +'%Y-%m-%d %H:%M') | | $line" | tee -a $WATCHER_LOG
         fi
     done
 }
@@ -30,7 +30,7 @@ mkdir -p ${WATCHER_LOG_DIR}
 
 # Check for lock file to determine if another instance of this script or benchmark is running
 if [ -e "${LOCK_FILE}" ]; then
-    echo "Another instance of the script or benchmark is running" | log_with_timestamp
+    echo "Another instance of the script or benchmark is running" | log_with_timestamp LOCK_FILE
     exit 1
 fi
 
@@ -38,8 +38,8 @@ fi
 touch "${LOCK_FILE}"
 
 # Pull the newest changes from git
-cd "${GIT_REPO_DIR}" || { echo "Can't change to GIT_REPO_DIR ${GIT_REPO_DIR}" | log_with_timestamp; exit 1; }
-git pull | log_with_timestamp
+cd "${GIT_REPO_DIR}" || { echo "ERROR: Can't change to GIT_REPO_DIR ${GIT_REPO_DIR}" | log_with_timestamp; exit 1; }
+git pull | log_with_timestamp GIT
 
 # Check author of the latest commit
 LATEST_COMMIT_AUTHOR=$(git log -1 --pretty=format:"%an")
@@ -62,6 +62,8 @@ if [ "${LATEST_COMMIT_AUTHOR}" != "${BENCHMARK_AUTHOR}" ]; then
         exit 1
     fi
     echo "Benchmark complete" | log_with_timestamp "${LATEST_COMMIT_HASH}"
+else
+    echo "Latest commit is a benchmark commit, not running" | log_with_timestamp "${LATEST_COMMIT_HASH}"
 fi
 
 # Remove lock file at the end
