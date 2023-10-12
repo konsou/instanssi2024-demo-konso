@@ -37,9 +37,9 @@ public class Instanssi2024DemoKonso extends PApplet{
     int gridCellCount = gridSizeX * gridSizeY;
 
     // TODO: Camera control
-    float HALF_WIDTH;
-    float HALF_HEIGHT;
-    float CAMERA_DEFAULT_Z;
+    double HALF_WIDTH;
+    double HALF_HEIGHT;
+    double CAMERA_DEFAULT_Z;
 
     public static void main(String[] args) {
         String[] appletArgs = new String[args.length + 1];
@@ -55,8 +55,8 @@ public class Instanssi2024DemoKonso extends PApplet{
 
     @Override
     public void setup() {
-        HALF_WIDTH = width / 2;
-        HALF_HEIGHT = height / 2;
+        HALF_WIDTH = width / 2.0;
+        HALF_HEIGHT = height / 2.0;
         // CAMERA_DEFAULT_Z = (height/2.0) / tan(PI*30.0 / 180.0);
 
         // Process command line args
@@ -124,8 +124,8 @@ public class Instanssi2024DemoKonso extends PApplet{
     }
 
     void displayCell(int x, int y, boolean isAlive) {
-        float cellCenterX = (x * pixelSize) + (pixelSize / 2);
-        float cellCenterY = (y * pixelSize) + (pixelSize / 2);
+        float cellCenterX = (x * pixelSize) + ((float) pixelSize / 2);
+        float cellCenterY = (y * pixelSize) + ((float) pixelSize / 2);
 
         if (isAlive) {
             stroke(randomAliveColor());
@@ -138,7 +138,7 @@ public class Instanssi2024DemoKonso extends PApplet{
      * results to the new grid. Both grids should be of the same size. The function
      * assumes that the `currentGrid` represents the current state of the Game of
      * Life, and it calculates the next state, writing it directly to the `newGrid`.
-     *
+     * <p>
      * This function modifies the `newGrid` directly for performance reasons.
      *
      * @param currentGrid The current state of the Game of Life grid.
