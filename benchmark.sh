@@ -46,7 +46,7 @@ export DISPLAY=:99.0
 parse_frame_count() {
   local log_filename=$1
   # Get the last occurrence of "Frame count (draw):" from the file
-  grep "Frame count (draw):" "$log_filename" | tail -n 1 | awk '{print $3}'
+  grep "Frame count (draw):" "$log_filename" | tail -n 1 | awk '{print $4}'
 }
 
 # Run the benchmark
