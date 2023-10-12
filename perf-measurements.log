@@ -111,3 +111,20 @@ Frame count (total):  9125
 Frame count (draw):   9125
 Average FPS (draw):   152.08334
 Difference from baseline: -86 frames (0%)
+--------------------------
+commit 218fc264dfdc8afe5d372aa2b3c05d168594f952
+Author: Tomi Javanainen <tomi.javanainen@gmail.com>
+Date:   Thu Oct 12 15:01:49 2023 +0300
+
+    Remove lock file when benchmark fails
+Load Average before benchmark:  0.00, 0.00, 0.01
+Automatic benchmark mode
+Setting benchmark runtime to 60 seconds
+Setting FPS limit to 999
+Runtime (total):      60172 ms
+Runtime (setup):      167 ms
+Runtime (draw):       60005 ms
+Frame count (total):  9254
+Frame count (draw):   9254
+Average FPS (draw):   154.22047
+Difference from baseline: 43 frames (0%)
