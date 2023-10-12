@@ -49,22 +49,6 @@ if [ "${SKIP_LOCK}" != "skip-lock" ] && [ -e "${LOCK_FILE}" ]; then
     exit 1
 fi
 
-run_and_log() {
-    local exit_status_file=$(mktemp)
-    # Use tee to direct command's output to both the console and the file, capturing the command's exit status
-    "$@" 2>&1 | tee >(sed "s/^/$(date +'%Y-%m-%d %H:%M') | /" >> "${OUTPUT_FILENAME}"; echo "${PIPESTATUS[0]}" > "$exit_status_file")
-    local cmd_status=$(cat "$exit_status_file")
-    rm -f "$exit_status_file"
-
-    if [ $cmd_status -ne 0 ]; then
-        echo "Error executing: $*" >&2
-        if [ "${SKIP_LOCK}" != "skip-lock" ]; then
-          rm -f "${LOCK_FILE}"
-        fi
-        exit $cmd_status
-    fi
-}
-
 # Create a lock file
 touch "${LOCK_FILE}"
 
@@ -73,7 +57,7 @@ load_avg=$(uptime | awk -F'[a-z]:' '{ print $2 }')
 
 # Compile
 echo "Compiling"
-run_and_log javac -classpath "${PROJECT_ROOT}/lib/core.jar" -d "${PROJECT_ROOT}/out/" "${PROJECT_ROOT}/src/Instanssi2024DemoKonso.java"
+javac -classpath "${PROJECT_ROOT}/lib/core.jar" -d "${PROJECT_ROOT}/out/" "${PROJECT_ROOT}/src/Instanssi2024DemoKonso.java"
 
 parse_frame_count() {
   local log_filename=$1
@@ -81,11 +65,24 @@ parse_frame_count() {
   grep "Frame count (draw):" "$log_filename" | tail -n 1 | awk '{print $4}'
 }
 
+remove_lockfile() {
+  # Only remove lockfile if not skipping lock checks
+  if [ "${SKIP_LOCK}" != "skip-lock" ]; then
+    rm -f "${LOCK_FILE}"
+  fi
+}
+
 # Run the benchmark
 echo "--------------------------" >> "${OUTPUT_FILENAME}"
 git log -1 >> "${OUTPUT_FILENAME}"
 echo "Load Average before benchmark: $load_avg" | tee -a "${OUTPUT_FILENAME}"
-run_and_log java -classpath "${PROJECT_ROOT}/lib/core.jar:${PROJECT_ROOT}/out/" Instanssi2024DemoKonso auto-benchmark $RUNTIME_SECONDS $FPS_CAP
+java -classpath "${PROJECT_ROOT}/lib/core.jar:${PROJECT_ROOT}/out/" Instanssi2024DemoKonso auto-benchmark $RUNTIME_SECONDS $FPS_CAP | tee -a "${OUTPUT_FILENAME}"
+# Check the exit status of the java command, not the tee
+if [ "${PIPESTATUS[0]}" -ne 0 ]; then
+    echo "Running benchmark failed" | tee -a "${OUTPUT_FILENAME}"
+    remove_lockfile
+    exit 1
+fi
 
 # Parse the frame counts
 baseline_frames=$(parse_frame_count "${BASELINE_FILENAME}")
@@ -101,7 +98,4 @@ git add "${OUTPUT_FILENAME}"
 git commit -m "Add benchmark info"
 git push
 
-# Only remove lockfile if not skipping lock checks
-if [ "${SKIP_LOCK}" != "skip-lock" ]; then
-  rm "${LOCK_FILE}"
-fi
+remove_lockfile
