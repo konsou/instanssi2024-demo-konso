@@ -29,12 +29,12 @@ CONFIG_VARS="$(grep -v '^#' "${DOTENV_FILE}" | xargs)"
 if [ -n "${CONFIG_VARS}" ]; then
     export "${CONFIG_VARS?}"
 else
-    echo "Error: No configurations found in ${DOTENV_FILE}." >&2
+    echo "Error: No configurations found in ${DOTENV_FILE}." | tee >(cat >&2) >> "${OUTPUT_FILENAME}"
     exit 1
 fi
 
 if [ -z "${XVFB_DISPLAY_NUM}" ]; then
-    echo "Error: XVFB_DISPLAY_NUM is not set in ${DOTENV_FILE}." >&2
+    echo "Error: XVFB_DISPLAY_NUM is not set in ${DOTENV_FILE}." | tee >(cat >&2) >> "${OUTPUT_FILENAME}"
     exit 1
 fi
 
@@ -76,7 +76,7 @@ remove_lockfile() {
 echo "--------------------------" >> "${OUTPUT_FILENAME}"
 git log -1 >> "${OUTPUT_FILENAME}"
 echo "Load Average before benchmark: $load_avg" | tee -a "${OUTPUT_FILENAME}"
-java -classpath "${PROJECT_ROOT}/lib/core.jar:${PROJECT_ROOT}/out/" Instanssi2024DemoKonso auto-benchmark $RUNTIME_SECONDS $FPS_CAP | tee -a "${OUTPUT_FILENAME}"
+java -classpath "${PROJECT_ROOT}/lib/core.jar:${PROJECT_ROOT}/out/" Instanssi2024DemoKonso auto-benchmark $RUNTIME_SECONDS $FPS_CAP 2>&1 | tee -a "${OUTPUT_FILENAME}"
 # Check the exit status of the java command, not the tee
 if [ "${PIPESTATUS[0]}" -ne 0 ]; then
     echo "Running benchmark failed" | tee -a "${OUTPUT_FILENAME}"
