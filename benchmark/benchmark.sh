@@ -11,9 +11,6 @@
 # requires: java 17 jdk
 # Xvfb should be installed for pseudo-display
 
-# Exit on errors
-set -e
-
 RUNTIME_SECONDS=60
 FPS_CAP=999
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
