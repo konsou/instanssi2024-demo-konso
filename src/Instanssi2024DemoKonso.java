@@ -40,7 +40,10 @@ public class Instanssi2024DemoKonso extends PApplet{
     float CAMERA_DEFAULT_Z;
 
     public static void main(String[] args) {
-        PApplet.main("Instanssi2024DemoKonso");  // Tell Processing to run this class
+        String[] appletArgs = new String[args.length + 1];
+        appletArgs[0] = "Instanssi2024DemoKonso";
+        System.arraycopy(args, 0, appletArgs, 1, args.length);
+        PApplet.main(appletArgs);
     }
 
     @Override
