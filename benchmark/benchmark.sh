@@ -49,6 +49,24 @@ if [ "${SKIP_LOCK}" != "skip-lock" ] && [ -e "${LOCK_FILE}" ]; then
     exit 1
 fi
 
+run_and_log() {
+    local cmd_output
+    cmd_output=$("$@" 2>&1) # Run the command and capture its output
+    local cmd_status=$?
+
+    # Print the command's output to stdout
+    echo "$cmd_output"
+
+    # Append the command's output to our OUTPUT_FILENAME
+    echo "$(date +'%Y-%m-%d %H:%M') | $cmd_output" >> "${OUTPUT_FILENAME}"
+
+    # If the command failed, exit
+    if [ $cmd_status -ne 0 ]; then
+        echo "Error executing: $*"
+        exit $cmd_status
+    fi
+}
+
 # Create a lock file
 touch "${LOCK_FILE}"
 
@@ -57,7 +75,7 @@ load_avg=$(uptime | awk -F'[a-z]:' '{ print $2 }')
 
 # Compile
 echo "Compiling"
-javac -classpath "${PROJECT_ROOT}/lib/core.jar" -d "${PROJECT_ROOT}/out/" "${PROJECT_ROOT}/src/Instanssi2024DemoKonso.java"
+run_and_log javac -classpath "${PROJECT_ROOT}/lib/core.jar" -d "${PROJECT_ROOT}/out/" "${PROJECT_ROOT}/src/Instanssi2024DemoKonso.java"
 
 parse_frame_count() {
   local log_filename=$1
@@ -69,7 +87,7 @@ parse_frame_count() {
 echo "--------------------------" >> "${OUTPUT_FILENAME}"
 git log -1 >> "${OUTPUT_FILENAME}"
 echo "Load Average before benchmark: $load_avg" | tee -a "${OUTPUT_FILENAME}"
-java -classpath "${PROJECT_ROOT}/lib/core.jar:${PROJECT_ROOT}/out/" Instanssi2024DemoKonso auto-benchmark $RUNTIME_SECONDS $FPS_CAP | tee -a "${OUTPUT_FILENAME}"
+run_and_log java -classpath "${PROJECT_ROOT}/lib/core.jar:${PROJECT_ROOT}/out/" Instanssi2024DemoKonso auto-benchmark $RUNTIME_SECONDS $FPS_CAP
 
 # Parse the frame counts
 baseline_frames=$(parse_frame_count "${BASELINE_FILENAME}")
