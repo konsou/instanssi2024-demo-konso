@@ -355,3 +355,71 @@ Date:   Thu Oct 12 17:48:48 2023 +0300
     Fix logging???
 Load Average before benchmark:  0.00, 0.00, 0.00
 Running benchmark failed
+--------------------------
+commit a3a905170bf099f6492108b37d951fb860ffa13b
+Author: stress-erkki <tomi.javanainen+stress-erkki@gmail.com>
+Date:   Thu Oct 12 17:50:40 2023 +0300
+
+    Add executable flag
+Load Average before benchmark:  0.00, 0.00, 0.00
+Running benchmark failed
+--------------------------
+commit b9781ae6673a2e8506379c09ee377f23e158c8a8
+Merge: 36bcc55 a3a9051
+Author: Tomi Javanainen <tomi.javanainen@gmail.com>
+Date:   Thu Oct 12 17:52:19 2023 +0300
+
+    Merge remote-tracking branch 'origin/main'
+Load Average before benchmark:  0.00, 0.00, 0.00
+Running benchmark failed
+--------------------------
+commit b9781ae6673a2e8506379c09ee377f23e158c8a8
+Merge: 36bcc55 a3a9051
+Author: Tomi Javanainen <tomi.javanainen@gmail.com>
+Date:   Thu Oct 12 17:52:19 2023 +0300
+
+    Merge remote-tracking branch 'origin/main'
+Load Average before benchmark:  0.00, 0.00, 0.00
+Running benchmark failed
+--------------------------
+commit ef507fbe2b629770287a9181755f9c4f55acac9d
+Author: Tomi Javanainen <tomi.javanainen@gmail.com>
+Date:   Thu Oct 12 17:57:32 2023 +0300
+
+    Logging tweaks
+Load Average before benchmark:  0.00, 0.00, 0.00
+java.awt.AWTError: Can't connect to X11 window server using ':99' as the value of the DISPLAY variable.
+	at java.desktop/sun.awt.X11GraphicsEnvironment.initDisplay(Native Method)
+	at java.desktop/sun.awt.X11GraphicsEnvironment$1.run(X11GraphicsEnvironment.java:105)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318)
+	at java.desktop/sun.awt.X11GraphicsEnvironment.initStatic(X11GraphicsEnvironment.java:64)
+	at java.desktop/sun.awt.X11GraphicsEnvironment.<clinit>(X11GraphicsEnvironment.java:59)
+	at java.desktop/sun.awt.PlatformGraphicsInfo.createGE(PlatformGraphicsInfo.java:36)
+	at java.desktop/java.awt.GraphicsEnvironment$LocalGE.createGE(GraphicsEnvironment.java:93)
+	at java.desktop/java.awt.GraphicsEnvironment$LocalGE.<clinit>(GraphicsEnvironment.java:84)
+	at java.desktop/java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment(GraphicsEnvironment.java:106)
+	at java.desktop/sun.awt.X11.XToolkit.<clinit>(XToolkit.java:224)
+	at java.desktop/sun.awt.PlatformGraphicsInfo.createToolkit(PlatformGraphicsInfo.java:40)
+	at java.desktop/java.awt.Toolkit.getDefaultToolkit(Toolkit.java:599)
+	at processing.awt.ShimAWT.initRun(ShimAWT.java:695)
+	at processing.core.PApplet.runSketch(PApplet.java:10058)
+	at processing.core.PApplet.main(PApplet.java:9845)
+	at Instanssi2024DemoKonso.main(Instanssi2024DemoKonso.java:48)
+Running benchmark failed
+--------------------------
+commit ef507fbe2b629770287a9181755f9c4f55acac9d
+Author: Tomi Javanainen <tomi.javanainen@gmail.com>
+Date:   Thu Oct 12 17:57:32 2023 +0300
+
+    Logging tweaks
+Load Average before benchmark:  0.16, 0.03, 0.01
+Automatic benchmark mode
+Setting benchmark runtime to 60 seconds
+Setting FPS limit to 999
+Runtime (total):      60167 ms
+Runtime (setup):      167 ms
+Runtime (draw):       60000 ms
+Frame count (total):  8965
+Frame count (draw):   8965
+Average FPS (draw):   149.41667
+Difference from baseline: -246 frames (-2.00%)
