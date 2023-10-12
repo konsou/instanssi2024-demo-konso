@@ -1,22 +1,25 @@
 #!/usr/bin/env bash
 
 # Configurable variables
-GIT_REPO_DIR="/home/erkki/instanssi2024DemoKonso"
+SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
+RESULT_DIR="${SCRIPT_DIR}/results"
+GIT_REPO_DIR="${SCRIPT_DIR%/*}"
 BENCHMARK_AUTHOR="stress-erkki"
-BENCHMARK_LOG="${GIT_REPO_DIR}/perf-measurements.log"
+BENCHMARK_SCRIPT="${SCRIPT_DIR}/benchmark.sh"
+BENCHMARK_LOG="${RESULT_DIR}/benchmark.log"
 WATCHER_LOG_DIR="${GIT_REPO_DIR}/log"
 WATCHER_LOG="${WATCHER_LOG_DIR}/benchmark-watcher.log"
 LOCK_FILE="/tmp/konso-demo-benchmark.lock"
 
-# log_with_timestamp [COMMIT_HASH]
+# log_with_timestamp [TAG]
 # Logs a message to WATCHER_LOG with a timestamp prepended.
-# If a COMMIT_HASH is provided, it will be included after the timestamp.
+# If a TAG is provided, it will be included after the timestamp.
 # Messages are read from standard input (piped into the function).
 # Usage:
 #     echo "This is my log message" | log_with_timestamp
-#     echo "This is a message with a commit hash" | log_with_timestamp "abcd1234"
+#     echo "This is a message with a tag" | log_with_timestamp "abcd1234"
 log_with_timestamp() {
-    local tag="${1:-}" # If provided, use the commit hash, otherwise default to an empty string
+    local tag="${1:-}" # If provided, use the tag, otherwise default to an empty string
     while read -r line; do
         if [ -n "$tag" ]; then
             echo "$(date +'%Y-%m-%d %H:%M') | $tag | $line" | tee -a $WATCHER_LOG
@@ -26,7 +29,7 @@ log_with_timestamp() {
     done
 }
 
-mkdir -p ${WATCHER_LOG_DIR}
+mkdir -p "${WATCHER_LOG_DIR}"
 
 # Check for lock file to determine if another instance of this script or benchmark is running
 if [ -e "${LOCK_FILE}" ]; then
@@ -58,7 +61,7 @@ fi
 if [ "${LATEST_COMMIT_AUTHOR}" != "${BENCHMARK_AUTHOR}" ]; then
     echo "Starting benchmark" | log_with_timestamp "${LATEST_COMMIT_HASH}"
     # Without skip-lock, benchmark would fail due to locking
-    if ! ./benchmark.sh skip-lock; then
+    if ! "${BENCHMARK_SCRIPT}" skip-lock; then
         echo "Benchmark script failed" | log_with_timestamp "${LATEST_COMMIT_HASH}"
         rm "${LOCK_FILE}"
         exit 1
