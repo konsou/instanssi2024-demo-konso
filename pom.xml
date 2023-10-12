@@ -21,4 +21,16 @@
             <version>1.0</version>
         </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>Instanssi2024DemoKonso</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
