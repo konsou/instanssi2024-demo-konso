@@ -1,13 +1,17 @@
 --------------------------
-commit 80f6a7354fda234cb469c5e4b4f4a632c281162f
-Author: stress-erkki <tomi.javanainen+stress-erkki@gmail.com>
-Date:   Wed Oct 11 21:48:36 2023 +0300
+commit 17ed0ea69e87285b2b333ce68d2dae2e902d5d76
+Merge: c680582 9fa552b
+Author: Tomi Javanainen <tomi.javanainen@gmail.com>
+Date:   Thu Oct 12 12:58:25 2023 +0300
 
-    Add benchmark info
+    Merge remote-tracking branch 'origin/main'
+Load Average before benchmark:  0.00, 0.00, 0.00
 Automatic benchmark mode
 Setting benchmark runtime to 60 seconds
 Setting FPS limit to 999
-Runtime:     60006 ms
-Frame count: 8788
-Average FPS: 146.45203
-Finished.
+Runtime (total):      60167 ms
+Runtime (setup):      163 ms
+Runtime (draw):       60004 ms
+Frame count (total):  9211
+Frame count (draw):   9211
+Average FPS (draw):   153.50642
