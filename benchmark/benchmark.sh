@@ -71,17 +71,18 @@ echo "Benchmark started at $(date +'%Y-%m-%d %H:%M')" >> "${OUTPUT_FILENAME}"
 git log -1 >> "${OUTPUT_FILENAME}"
 
 # Compile
-echo "Compiling"
-(cd "${PROJECT_ROOT}/src" && javac -classpath "${PROJECT_ROOT}/lib/core.jar" -d "${PROJECT_ROOT}/out/" *.java) 2>&1 | tee -a "${OUTPUT_FILENAME}"
+echo "Building"
+(cd "${PROJECT_ROOT}" && mvn install:install-file "-Dfile=lib\core.jar" -DgroupId="processing.core" -DartifactId=core -Dversion="1.0" -Dpackaging=jar) || echo "Error adding core.jar to maven" | tee -a "${OUTPUT_FILENAME}"
+(cd "${PROJECT_ROOT}" && mvn compile) || echo "Error compiling" | tee -a "${OUTPUT_FILENAME}"
 # Check the exit status of the java command, not the tee
 if [ "${PIPESTATUS[0]}" -ne 0 ]; then
-    echo "Compiling failed" | tee -a "${OUTPUT_FILENAME}"
+    echo "Build failed" | tee -a "${OUTPUT_FILENAME}"
     remove_lockfile
     exit 1
 fi
 
 echo "Load Average before benchmark: $load_avg" | tee -a "${OUTPUT_FILENAME}"
-java -classpath "${PROJECT_ROOT}/lib/core.jar:${PROJECT_ROOT}/out/" Instanssi2024DemoKonso auto-benchmark $RUNTIME_SECONDS $FPS_CAP 2>&1 | tee -a "${OUTPUT_FILENAME}"
+java -classpath "${PROJECT_ROOT}/lib/core.jar:${PROJECT_ROOT}/target/classes/" Instanssi2024DemoKonso auto-benchmark $RUNTIME_SECONDS $FPS_CAP 2>&1 | tee -a "${OUTPUT_FILENAME}"
 # Check the exit status of the java command, not the tee
 if [ "${PIPESTATUS[0]}" -ne 0 ]; then
     echo "Running benchmark failed" | tee -a "${OUTPUT_FILENAME}"
