@@ -1,4 +1,13 @@
 #!/usr/bin/env bash
+# This script runs a benchmark for the provided project.
+# To ensure only one instance of this script runs at a time, it utilizes a lock mechanism.
+# However, there may be scenarios where this lock should be overridden (e.g., when called by a watcher).
+# To skip the lock check, pass "skip-lock" as a command-line argument.
+# Example:
+#     ./benchmark.sh skip-lock
+# When run without arguments, the script will check for the lock:
+#     ./benchmark.sh
+#
 # requires: java 17 jdk
 # Xvfb should be installed for pseudo-display
 #
@@ -17,9 +26,10 @@ BASELINE_FILENAME=perf-baseline.log
 GIT_REPO=git@github.com:konsou/instanssi2024DemoKonso.git
 LOCK_FILE="/tmp/konso-demo-benchmark.lock"
 
+SKIP_LOCK=${1:-"false"}
 
 # Check for lock file to determine if another instance of this script or benchmark is running
-if [ -e "${LOCK_FILE}" ]; then
+if [ "${SKIP_LOCK}" != "skip-lock" ] && [ -e "${LOCK_FILE}" ]; then
     echo "Another instance of the script or benchmark is running."
     exit 1
 fi
@@ -72,5 +82,7 @@ git push $GIT_REPO
 # Clean up Xvfb
 sudo ./kill_xvfb.sh
 
-# Remove lock file at the end
-rm "${LOCK_FILE}"
+# Only remove lockfile if not skipping lock checks
+if [ "${SKIP_LOCK}" != "skip-lock" ]; then
+  rm "${LOCK_FILE}"
+fi

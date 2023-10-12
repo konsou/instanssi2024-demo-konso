@@ -57,7 +57,8 @@ fi
 # If the commit author is not BENCHMARK_AUTHOR, then run the benchmark
 if [ "${LATEST_COMMIT_AUTHOR}" != "${BENCHMARK_AUTHOR}" ]; then
     echo "Starting benchmark" | log_with_timestamp "${LATEST_COMMIT_HASH}"
-    if ! ./benchmark.sh; then
+    # Without skip-lock, benchmark would fail due to locking
+    if ! ./benchmark.sh skip-lock; then
         echo "Benchmark script failed" | log_with_timestamp "${LATEST_COMMIT_HASH}"
         exit 1
     fi
