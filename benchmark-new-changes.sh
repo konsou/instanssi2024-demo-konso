@@ -60,6 +60,7 @@ if [ "${LATEST_COMMIT_AUTHOR}" != "${BENCHMARK_AUTHOR}" ]; then
     # Without skip-lock, benchmark would fail due to locking
     if ! ./benchmark.sh skip-lock; then
         echo "Benchmark script failed" | log_with_timestamp "${LATEST_COMMIT_HASH}"
+        rm "${LOCK_FILE}"
         exit 1
     fi
     echo "Benchmark complete" | log_with_timestamp "${LATEST_COMMIT_HASH}"
