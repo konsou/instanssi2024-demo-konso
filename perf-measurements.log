@@ -128,3 +128,30 @@ Frame count (total):  9254
 Frame count (draw):   9254
 Average FPS (draw):   154.22047
 Difference from baseline: 43 frames (0%)
+--------------------------
+commit 9f193a8497a0004b58e860910257032921bd7d66
+Author: stress-erkki <tomi.javanainen+stress-erkki@gmail.com>
+Date:   Thu Oct 12 15:07:42 2023 +0300
+
+    Add benchmark info
+Load Average before benchmark:  0.18, 0.19, 0.09
+Automatic benchmark mode
+Setting benchmark runtime to 60 seconds
+Setting FPS limit to 999
+--------------------------
+commit 9f193a8497a0004b58e860910257032921bd7d66
+Author: stress-erkki <tomi.javanainen+stress-erkki@gmail.com>
+Date:   Thu Oct 12 15:07:42 2023 +0300
+
+    Add benchmark info
+Load Average before benchmark:  0.18, 0.19, 0.09
+Automatic benchmark mode
+Setting benchmark runtime to 60 seconds
+Setting FPS limit to 999
+Runtime (total):      60169 ms
+Runtime (setup):      168 ms
+Runtime (draw):       60001 ms
+Frame count (total):  6849
+Frame count (draw):   6849
+Average FPS (draw):   114.148094
+Difference from baseline: -2362 frames (-25.00%)
