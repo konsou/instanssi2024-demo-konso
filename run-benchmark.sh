@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-# processing-java should be in PATH
+# requires: java 17 jdk
 # Xvfb should be installed for pseudo-display
 #
 # Hacky fixes: run "sudo visudo" and add these lines:
 # erkki ALL=NOPASSWD: /usr/bin/Xvfb
 # erkki ALL=NOPASSWD: /bin/rm /tmp/.X99-lock
+# erkki ALL=NOPASSWD: pkill -f "Xvfb :99"
 # This prevents weird errors where rest of the script tries
 # to proceed while the sudo password prompt is in the
 # background somewhere
@@ -17,6 +18,10 @@ GIT_REPO=git@github.com:konsou/instanssi2024DemoKonso.git
 
 # Capture CPU load
 load_avg=$(uptime | awk -F'[a-z]:' '{ print $2 }')
+
+# Compile
+echo "Compiling"
+javac -classpath lib/core.jar -d out/ src/Instanssi2024DemoKonso.java
 
 # Check if the lock file exists before trying to remove it
 if [ -e /tmp/.X99-lock ]; then
@@ -37,7 +42,7 @@ parse_frame_count() {
 echo "--------------------------" >> $OUTPUT_FILENAME
 git log -1 >> $OUTPUT_FILENAME
 echo "Load Average before benchmark: $load_avg" | tee -a $OUTPUT_FILENAME
-processing-java --sketch=$(pwd) --run auto-benchmark $RUNTIME_SECONDS $FPS_CAP | tee -a $OUTPUT_FILENAME
+java -classpath out/:lib/core.jar Instanssi2024DemoKonso auto-benchmark $RUNTIME_SECONDS $FPS_CAP | tee -a $OUTPUT_FILENAME
 
 # Parse the frame counts
 baseline_frames=$(parse_frame_count $BASELINE_FILENAME)
@@ -54,4 +59,4 @@ git commit -m "Add benchmark info"
 git push $GIT_REPO
 
 # Clean up Xvfb
-sudo pkill -f "Xvfb :99"
+sudo ./kill_xvfb.sh
