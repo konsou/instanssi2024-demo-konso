@@ -8,7 +8,13 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 # Load configurations from .env
-export "$(grep -v '^#' "${DOTENV_FILE}" | xargs)"
+CONFIG_VARS="$(grep -v '^#' "${DOTENV_FILE}" | xargs)"
+if [ -n "${CONFIG_VARS}" ]; then
+    export ${CONFIG_VARS}
+else
+    echo "Error: No configurations found in ${DOTENV_FILE}." >&2
+    exit 1
+fi
 
 if [ -z "${XVFB_DISPLAY_NUM}" ]; then
     echo "Error: XVFB_DISPLAY_NUM is not set in ${DOTENV_FILE}." >&2
