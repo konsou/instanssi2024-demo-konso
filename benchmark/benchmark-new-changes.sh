@@ -46,7 +46,11 @@ cd "${GIT_REPO_DIR}" || {
   echo "ERROR: Can't change to GIT_REPO_DIR ${GIT_REPO_DIR}" | log_with_timestamp SYSTEM
   exit 1
 }
-git pull 2>&1 | log_with_timestamp GIT_PULL
+
+# Overwrite local changes
+git fetch 2>&1 | log_with_timestamp GIT_FETCH
+git reset --hard HEAD 2>&1 | log_with_timestamp GIT_RESET
+git merge '@{u}' 2>&1 | log_with_timestamp GIT_MERGE
 
 LATEST_COMMIT_AUTHOR=$(git log -1 --pretty=format:"%an")
 LATEST_COMMIT_HASH_FULL=$(git rev-parse HEAD)
