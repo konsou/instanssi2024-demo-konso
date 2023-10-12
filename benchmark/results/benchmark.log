@@ -190,3 +190,20 @@ Frame count (total):  9027
 Frame count (draw):   9027
 Average FPS (draw):   150.44498
 Difference from baseline: -184 frames (-1.00%)
+--------------------------
+commit bee96681e218bcdc40c5d6ea4034fb3832dcdd7d
+Author: Tomi Javanainen <tomi.javanainen@gmail.com>
+Date:   Thu Oct 12 16:18:39 2023 +0300
+
+    Remove sudo commands
+Load Average before benchmark:  0.00, 0.00, 0.00
+Automatic benchmark mode
+Setting benchmark runtime to 60 seconds
+Setting FPS limit to 999
+Runtime (total):      60171 ms
+Runtime (setup):      167 ms
+Runtime (draw):       60004 ms
+Frame count (total):  9124
+Frame count (draw):   9124
+Average FPS (draw):   152.05653
+Difference from baseline: -87 frames (0%)
