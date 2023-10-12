@@ -68,6 +68,7 @@ remove_lockfile() {
 # Run the benchmark
 echo "--------------------------" >> "${OUTPUT_FILENAME}"
 echo "Benchmark started at $(date +'%Y-%m-%d %H:%M')" >> "${OUTPUT_FILENAME}"
+git log -1 >> "${OUTPUT_FILENAME}"
 
 # Compile
 echo "Compiling"
@@ -79,7 +80,6 @@ if [ "${PIPESTATUS[0]}" -ne 0 ]; then
     exit 1
 fi
 
-git log -1 >> "${OUTPUT_FILENAME}"
 echo "Load Average before benchmark: $load_avg" | tee -a "${OUTPUT_FILENAME}"
 java -classpath "${PROJECT_ROOT}/lib/core.jar:${PROJECT_ROOT}/out/" Instanssi2024DemoKonso auto-benchmark $RUNTIME_SECONDS $FPS_CAP 2>&1 | tee -a "${OUTPUT_FILENAME}"
 # Check the exit status of the java command, not the tee
