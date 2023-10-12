@@ -55,10 +55,6 @@ touch "${LOCK_FILE}"
 # Capture CPU load
 load_avg=$(uptime | awk -F'[a-z]:' '{ print $2 }')
 
-# Compile
-echo "Compiling"
-javac -classpath "${PROJECT_ROOT}/lib/core.jar" -d "${PROJECT_ROOT}/out/" "${PROJECT_ROOT}/src/Instanssi2024DemoKonso.java"
-
 parse_frame_count() {
   local log_filename=$1
   # Get the last occurrence of "Frame count (draw):" from the file
@@ -74,6 +70,18 @@ remove_lockfile() {
 
 # Run the benchmark
 echo "--------------------------" >> "${OUTPUT_FILENAME}"
+echo "Benchmark started at $(date +'%Y-%m-%d %H:%M')" >> "${OUTPUT_FILENAME}"
+
+# Compile
+echo "Compiling"
+javac -classpath "${PROJECT_ROOT}/lib/core.jar" -d "${PROJECT_ROOT}/out/" "${PROJECT_ROOT}/src/Instanssi2024DemoKonso.java" 2>&1 | tee -a "${OUTPUT_FILENAME}"
+# Check the exit status of the java command, not the tee
+if [ "${PIPESTATUS[0]}" -ne 0 ]; then
+    echo "Compiling failed" | tee -a "${OUTPUT_FILENAME}"
+    remove_lockfile
+    exit 1
+fi
+
 git log -1 >> "${OUTPUT_FILENAME}"
 echo "Load Average before benchmark: $load_avg" | tee -a "${OUTPUT_FILENAME}"
 java -classpath "${PROJECT_ROOT}/lib/core.jar:${PROJECT_ROOT}/out/" Instanssi2024DemoKonso auto-benchmark $RUNTIME_SECONDS $FPS_CAP 2>&1 | tee -a "${OUTPUT_FILENAME}"
