@@ -63,6 +63,9 @@ run_and_log() {
     # If the command failed, exit
     if [ $cmd_status -ne 0 ]; then
         echo "Error executing: $*"
+        if [ "${SKIP_LOCK}" != "skip-lock" ]; then
+          rm -f "${LOCK_FILE}"
+        fi
         exit $cmd_status
     fi
 }
