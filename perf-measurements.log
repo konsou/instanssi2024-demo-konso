@@ -58,3 +58,20 @@ Runtime:     60004 ms
 Frame count: 9103
 Average FPS: 151.70654
 Difference from baseline: 315 frames (3.00%)
+--------------------------
+commit 740bb47efcd1fe0345f7adfb6657390173d45e6d
+Author: stress-erkki <tomi.javanainen+stress-erkki@gmail.com>
+Date:   Thu Oct 12 14:25:12 2023 +0300
+
+    Add executable bit
+Load Average before benchmark:  0.00, 0.00, 0.00
+Automatic benchmark mode
+Setting benchmark runtime to 60 seconds
+Setting FPS limit to 999
+Runtime (total):      60169 ms
+Runtime (setup):      165 ms
+Runtime (draw):       60004 ms
+Frame count (total):  9161
+Frame count (draw):   9161
+Average FPS (draw):   152.67316
+Difference from baseline:  frames (%)
