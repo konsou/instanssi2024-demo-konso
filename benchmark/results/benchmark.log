@@ -173,3 +173,20 @@ Frame count (total):  8998
 Frame count (draw):   8998
 Average FPS (draw):   149.95917
 Difference from baseline: -213 frames (-2.00%)
+--------------------------
+commit ff4001c912ca5f1a2af3106158a7d6141cfe353c
+Author: Tomi Javanainen <tomi.javanainen@gmail.com>
+Date:   Thu Oct 12 15:55:42 2023 +0300
+
+    Update PROJECT_ROOT definition
+Load Average before benchmark:  0.00, 0.00, 0.00
+Automatic benchmark mode
+Setting benchmark runtime to 60 seconds
+Setting FPS limit to 999
+Runtime (total):      60166 ms
+Runtime (setup):      164 ms
+Runtime (draw):       60002 ms
+Frame count (total):  9027
+Frame count (draw):   9027
+Average FPS (draw):   150.44498
+Difference from baseline: -184 frames (-1.00%)
