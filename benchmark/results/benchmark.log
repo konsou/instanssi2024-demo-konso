@@ -233,3 +233,11 @@ Date:   Thu Oct 12 16:41:03 2023 +0300
     Add benchmark info
 Load Average before benchmark:  0.00, 0.00, 0.00
 Difference from baseline: -87 frames (0%)
+--------------------------
+commit 673d400f4f5a4aaf2fb28847d132f154b7e376dc
+Author: Tomi Javanainen <tomi.javanainen@gmail.com>
+Date:   Thu Oct 12 16:49:51 2023 +0300
+
+    Fix .env loading
+Load Average before benchmark:  0.00, 0.00, 0.00
+Difference from baseline: -87 frames (0%)
