@@ -30,27 +30,7 @@ public class Instanssi2024DemoKonso extends PApplet{
         // Instantiate things here to measure loading time more accurately
         colors = new Colors();
 
-        // Process command line args
-        if (args != null){
-            if (args[0].equals("auto-benchmark")){
-                println("Automatic benchmark mode");
-                settings.BENCHMARK_MODE = true;
-                try {
-                    settings.BENCHMARK_RUNTIME_MS = Integer.parseInt(args[1]) * 1000;
-                    println("Setting benchmark runtime to " + settings.BENCHMARK_RUNTIME_MS / 1000 + " seconds");
-                } catch (Exception e) {
-                    println("Error: Benchmark runtime not set or invalid, exiting");
-                    System.exit(1);
-                }
-                try {
-                    settings.BENCHMARK_FPS_CAP = Integer.parseInt(args[2]);
-                    println("Setting FPS limit to " + settings.BENCHMARK_FPS_CAP);
-                } catch (Exception e) {
-                    println("Error: Benchmark FPS cap not set or invalid, exiting");
-                    System.exit(1);
-                }
-            }
-        }
+        handleArguments(args);
 
         PRIMARY_GRID = initGrid(settings.gridSizeX, settings.gridSizeY);
         SECONDARY_GRID = initGrid(settings.gridSizeX, settings.gridSizeY);
@@ -206,5 +186,34 @@ public class Instanssi2024DemoKonso extends PApplet{
         println("Frame count (draw):   " + drawFrameCount());
         println("Average FPS (draw):   " + avgDrawFPS);
         exit();
+    }
+
+    void handleArguments(String[] args){
+        ArgumentParser argParser = new ArgumentParser();
+
+        if (argParser.parse(args)) {
+            if (argParser.isBenchmarkMode()) {
+                println("Automatic benchmark mode");
+                settings.BENCHMARK_MODE = true;
+
+                try {
+                    settings.BENCHMARK_RUNTIME_MS = argParser.getRuntime() * 1000;
+                    println("Setting benchmark runtime to " + settings.BENCHMARK_RUNTIME_MS / 1000 + " seconds");
+                } catch (Exception e) {
+                    println("Error: Benchmark runtime not set or invalid, exiting");
+                    System.exit(1);
+                }
+
+                try {
+                    settings.BENCHMARK_FPS_CAP = argParser.getFPSCap();
+                    println("Setting FPS limit to " + settings.BENCHMARK_FPS_CAP);
+                } catch (Exception e) {
+                    println("Error: Benchmark FPS cap not set or invalid, exiting");
+                    System.exit(1);
+                }
+            }
+        } else {
+            System.exit(1);
+        }
     }
 }
