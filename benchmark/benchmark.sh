@@ -124,8 +124,7 @@ fi
 
 # 3. Parse the output for needed info and add to result array
 
-# TODO: move calculations to python? THIS DOESN'T WORK ATM!
-results_array["baseline_frames"]=$(parse_frame_count "$(cat "${BASELINE_FILENAME}")")
+results_array["baseline_frames"]=$(./get_baseline.py results.draw.frame_count)
 results_array["current_frames"]=$(parse_frame_count "$benchmark_output")
 results_array["draw_average_fps"]=$(parse_average_fps "$benchmark_output")
 
