@@ -1,0 +1,87 @@
+// Example data structure. In real world, everything is on one line.
+{
+  "timestamp": "2023-10-13T14:59:00+03:00",
+  "commit": {
+    "hash": "c08585bcc6b9d3c3e838c3a4016a99c431ac9de1",
+    "timestamp": "2023-10-13T14:58:38+03:00",
+    "message": "Fixed XYZ",
+    "author": {
+      "name": "Erkki Penttilä",
+      "email": "email@mail.com"
+    },
+  },
+  "environment": {
+    "hostname": "benchmark-machine01",
+    "cpu": {
+      "name": "Intel(R) Core(TM) i9-9900K CPU @ 3.60GHz",
+      "cores": 8
+    },
+    "gpu": {
+      "name": "NVIDIA GeForce GTX 1080 Ti",
+      "vram": "11 GB"
+    },
+    "cpu_load_averages": "0.00, 0.10, 0.07"
+  },
+  "settings": {
+    "runtime_seconds": 60,
+    "fps_limit": 999
+  },
+  "results": {
+    "total": {
+      "runtime_ms": 60181
+    },
+    "setup": {
+      "runtime_ms": 179
+    },
+    "draw": {
+      "runtime_ms": 60002,
+      "frame_count": 9115,
+      "average_fps": 151.9116
+    }
+  },
+  "difference_from_baseline": {
+    "frames": -96,
+    "percentage": -1.00
+  },
+  "baseline": {
+    "timestamp": "2022-10-13T14:59:00+03:00",
+    "commit": {
+      "hash": "cawsef9yfwe98yqp392hyp9f23qh9f283qåpf29h82qå23qf",
+      "timestamp": "2022-10-13T14:58:38+03:00",
+      "message": "New baseline",
+      "author": {
+        "name": "Base Liner",
+        "email": "email@baselinemail.com"
+      },
+    },
+    "environment": {
+      "hostname": "benchmark-machine01",
+      "cpu": {
+        "name": "Intel(R) Core(TM) i9-9900K CPU @ 3.60GHz",
+        "cores": 8
+      },
+      "gpu": {
+        "name": "NVIDIA GeForce GTX 1080 Ti",
+        "vram": "11 GB"
+      },
+      "cpu_load_averages": "0.00, 0.10, 0.07"
+    },
+    "settings": {
+      "runtime_seconds": 60,
+      "fps_limit": 999
+    },
+    "results": {
+      "total": {
+        "runtime_ms": 60181
+      },
+      "setup": {
+        "runtime_ms": 179
+      },
+      "draw": {
+        "runtime_ms": 60002,
+        "frame_count": 9115,
+        "average_fps": 151.9116
+      }
+    }
+  }
+}
