@@ -20,7 +20,7 @@ DETAILED_LOG_DIR="${PROJECT_ROOT}/log"
 DETAILED_LOG="${DETAILED_LOG_DIR}/benchmark-full.log"
 LOCK_FILE="/tmp/konso-demo-benchmark.lock"
 
-source "${SCRIPT_DIR}/venv.sh"
+source "${SCRIPT_DIR}/dotenv.sh"
 source "${SCRIPT_DIR}/discord.sh"
 
 mkdir -p "${DETAILED_LOG_DIR}" || { echo "Failed to create log dir ${DETAILED_LOG_DIR}" >&2; exit 1; }

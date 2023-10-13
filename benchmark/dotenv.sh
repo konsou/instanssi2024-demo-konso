@@ -2,7 +2,7 @@
 
 # Exports all environment variables from a file
 # Example usage
-# source venv.sh
+# source dotenv.sh
 # load_venv "/path/to/.env"
 load_venv() {
     # Check if the argument (file path) was provided

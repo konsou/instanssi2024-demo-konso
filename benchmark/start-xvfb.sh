@@ -7,7 +7,7 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-source "${SCRIPT_DIR}/venv.sh"
+source "${SCRIPT_DIR}/dotenv.sh"
 
 load_venv "${DOTENV_FILE}" || exit 1
 
