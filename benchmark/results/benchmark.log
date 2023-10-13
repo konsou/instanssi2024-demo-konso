@@ -884,3 +884,28 @@ Frame count (total):  9074
 Frame count (draw):   9074
 Average FPS (draw):   151.22577
 [0m[0mDifference from baseline: -137 frames (-1.00%)
+--------------------------
+Benchmark started at 2023-10-13 13:19
+commit 9a0e19b617a0994bacb28b2c4e8c68d970040c45
+Author: Tomi Javanainen <tomi.javanainen@gmail.com>
+Date:   Fri Oct 13 13:18:22 2023 +0300
+
+    Add venv.sh
+Load averages before benchmark:  0.00, 0.00, 0.00
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m------< [0;36mcodes.konso.demo.instanssi2024:konso-demo-instanssi2024[0;1m >-------[m
+[[1;34mINFO[m] [1mBuilding konso-demo-instanssi2024 1.0[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mexec-maven-plugin:3.1.0:java[m [1m(default-cli)[m @ [36mkonso-demo-instanssi2024[0;1m ---[m
+Automatic benchmark mode
+Setting benchmark runtime to 60 seconds
+Setting FPS limit to 999
+Runtime (total):      60188 ms
+Runtime (setup):      187 ms
+Runtime (draw):       60001 ms
+Frame count (total):  9110
+Frame count (draw):   9110
+Average FPS (draw):   151.83081
+[0m[0mDifference from baseline: -101 frames (-1.00%)
