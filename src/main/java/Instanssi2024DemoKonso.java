@@ -1,15 +1,12 @@
 import processing.core.*;
 
 public class Instanssi2024DemoKonso extends PApplet{
-    // Two grid arrays that are reused
-    boolean[] PRIMARY_GRID;
-    boolean[] SECONDARY_GRID;
-
     public int DRAW_STARTED_AT_MS = -1;
     public int DRAW_STARTED_AT_FRAMES = -1;
 
 
     Colors colors;
+    LifeGrid grid;
     // Instantiating Settings here since settings() needs it
     Settings settings = new Settings();
 
@@ -27,17 +24,16 @@ public class Instanssi2024DemoKonso extends PApplet{
 
     @Override
     public void setup() {
-        // Instantiate things here to measure loading time more accurately
-        colors = new Colors();
-
         handleArguments(args);
 
-        PRIMARY_GRID = initGrid(settings.gridSizeX, settings.gridSizeY);
-        SECONDARY_GRID = initGrid(settings.gridSizeX, settings.gridSizeY);
+        // Instantiate things here to measure loading time more accurately
+        colors = new Colors();
+        grid = new LifeGrid(settings.gridSizeX, settings.gridSizeY);
 
         hint(ENABLE_STROKE_PURE);
         strokeWeight(settings.pixelSize);
         strokeCap(ROUND);
+
         if (settings.BENCHMARK_MODE){ frameRate(settings.BENCHMARK_FPS_CAP); }
         else { frameRate(settings.FPS_CAP); }
     }
@@ -48,25 +44,19 @@ public class Instanssi2024DemoKonso extends PApplet{
         if (DRAW_STARTED_AT_FRAMES == -1){ DRAW_STARTED_AT_FRAMES = frameCount; }
         if (settings.BENCHMARK_MODE && drawMillis() >= settings.BENCHMARK_RUNTIME_MS) { printBenchmarkStatsAndExit(); }
 
+        grid.update(frameCount);
+
+        // Draw to screen
         background(colors.BACKGROUND_COLOR);
 
-        boolean[] currentGrid, newGrid;
-
-        if (frameCount % 2 == 0){
-            currentGrid = PRIMARY_GRID;
-            newGrid = SECONDARY_GRID;
-        } else {
-            currentGrid = SECONDARY_GRID;
-            newGrid = PRIMARY_GRID;
-        }
-
-        // processLife modifies newGrid
-        processLife(currentGrid, newGrid);
-
-        for (int i = 0; i < newGrid.length; i++) {
-            int x = indexToX(i);
-            int y = indexToY(i, x);
-            displayCell(x, y, newGrid[i]);
+        // TODO: think what to do with this
+        // Separation of concerns point of view: do drawing here (but in a better way)
+        // Performance point of view: do drawing in grid.update()
+        boolean[] tempGrid = grid.getGrid();
+        for (int i = 0; i < tempGrid.length; i++) {
+            int x = grid.indexToX(i);
+            int y = grid.indexToY(i, x);
+            displayCell(x, y, tempGrid[i]);
         }
     }
 
@@ -78,89 +68,6 @@ public class Instanssi2024DemoKonso extends PApplet{
             stroke(colors.randomAliveColor());
             point(cellCenterX, cellCenterY);
         }
-    }
-
-    /**
-     * Processes the Game of Life logic on the provided current grid and writes the
-     * results to the new grid. Both grids should be of the same size. The function
-     * assumes that the `currentGrid` represents the current state of the Game of
-     * Life, and it calculates the next state, writing it directly to the `newGrid`.
-     * <p>
-     * This function modifies the `newGrid` directly for performance reasons.
-     *
-     * @param currentGrid The current state of the Game of Life grid.
-     * @param newGrid     An array where the next state of the Game of Life will be written.
-     */
-    void processLife(boolean[] currentGrid, boolean[] newGrid) {
-        for (int i = 0; i < currentGrid.length; i++) {
-            int x = indexToX(i);
-            int y = indexToY(i, x);
-            int aliveNeighbours = getAliveNeighbours(x, y, currentGrid);
-
-            newGrid[i] = computeNewState(currentGrid[i], aliveNeighbours);
-        }
-    }
-
-    boolean computeNewState(boolean currentState, int aliveNeighbours) {
-        if (currentState == settings.DEAD && aliveNeighbours == 3) return settings.ALIVE;
-        if (currentState == settings.ALIVE && (aliveNeighbours == 2 || aliveNeighbours == 3)) return settings.ALIVE;
-        return settings.DEAD;
-    }
-
-    int[] neighbourXOffsets = {
-            -1, 0, 1,
-            -1,    1,
-            -1, 0, 1,
-    };
-    int[] neighbourYOffsets = {
-            -1, -1, -1,
-            0,      0,
-            1,  1,  1,
-    };
-
-    int getAliveNeighbours(int x, int y, boolean[] grid) {
-        int aliveNeighbours = 0;
-
-        for (int i = 0; i < 8; i++) {
-            int neighbourX = x + neighbourXOffsets[i];
-            int neighbourY = y + neighbourYOffsets[i];
-
-            if (
-                    isInsideGrid(neighbourX, neighbourY) &&
-                            grid[xyToIndex(neighbourX, neighbourY)] == settings.ALIVE
-            ) {
-                aliveNeighbours++;
-                if (aliveNeighbours >= 4) return aliveNeighbours;  // Optimize for game of life rules
-            }
-        }
-
-        return aliveNeighbours;
-    }
-
-    boolean isInsideGrid(int x, int y) {
-        return !(x < 0 || x >= settings.gridSizeX || y < 0 || y >= settings.gridSizeY);
-    }
-
-    boolean[] initGrid(int width, int height) {
-        boolean[] newGrid = new boolean[width * height];
-
-        for (int i = 0; i < newGrid.length; i++) {
-            newGrid[i] = (i % 4 == 0) ? settings.ALIVE : settings.DEAD;
-        }
-
-        return newGrid;
-    }
-
-    int xyToIndex(int x, int y) {
-        return x * settings.gridSizeY + y;
-    }
-
-    int indexToX(int index) {
-        return index / settings.gridSizeY;
-    }
-
-    int indexToY(int index, int x) {
-        return index - (x * settings.gridSizeY);
     }
 
     /**

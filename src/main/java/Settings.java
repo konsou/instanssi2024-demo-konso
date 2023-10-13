@@ -6,13 +6,10 @@ public class Settings {
     public final double HALF_HEIGHT = SCREEN_HEIGHT / 2.0;
 
     // Benchmarking
-    public boolean BENCHMARK_MODE = true;
+    public boolean BENCHMARK_MODE = false;
     public int BENCHMARK_RUNTIME_MS = 10000;
     public int FPS_CAP = 60;
     public int BENCHMARK_FPS_CAP = 999;
-
-    public final boolean ALIVE = true;
-    public final boolean DEAD = false;
 
     // Grid size
     public int gridSizeX = 192;
