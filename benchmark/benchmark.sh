@@ -7,9 +7,6 @@
 #     ./benchmark.sh skip-lock
 # When run without arguments, the script will check for the lock:
 #     ./benchmark.sh
-#
-# requires: java 17 jdk
-# Xvfb should be installed for pseudo-display
 
 RUNTIME_SECONDS=60
 FPS_CAP=999
@@ -24,12 +21,19 @@ DETAILED_LOG="${DETAILED_LOG_DIR}/benchmark-full.log"
 LOCK_FILE="/tmp/konso-demo-benchmark.lock"
 
 source "${SCRIPT_DIR}/venv.sh"
+source "${SCRIPT_DIR}/discord.sh"
+
 mkdir -p "${DETAILED_LOG_DIR}" || { echo "Failed to create log dir ${DETAILED_LOG_DIR}" >&2; exit 1; }
 
 { load_venv "${DOTENV_FILE}" ; } >> "${DETAILED_LOG}" 2>&1 || exit 1
 
 if [ -z "${XVFB_DISPLAY_NUM}" ]; then
     echo "Error: XVFB_DISPLAY_NUM is not set in ${DOTENV_FILE}." | tee >(cat >&2) >> "${BENCHMARK_RESULTS}"
+    exit 1
+fi
+
+if [ -z "${DISCORD_WEBHOOK}" ]; then
+    echo "Error: DISCORD_WEBHOOK is not set in ${DOTENV_FILE}." | tee >(cat >&2) >> "${BENCHMARK_RESULTS}"
     exit 1
 fi
 
@@ -54,6 +58,12 @@ parse_frame_count() {
   local log_filename=$1
   # Get the last occurrence of "Frame count (draw):" from the file
   grep "Frame count (draw):" "$log_filename" | tail -n 1 | awk '{print $4}'
+}
+
+parse_average_fps() {
+  local log_filename=$1
+  # Get the last occurrence of "Average FPS (draw):" from the file
+  grep "Average FPS (draw):" "$log_filename" | tail -n 1 | awk '{print $4}'
 }
 
 remove_lockfile() {
@@ -88,14 +98,20 @@ if [ "${PIPESTATUS[0]}" -ne 0 ]; then
     exit 1
 fi
 
-# Parse the frame counts
+# Parse the frame counts and fps
 baseline_frames=$(parse_frame_count "${BASELINE_FILENAME}")
 current_frames=$(parse_frame_count "${BENCHMARK_RESULTS}")
+average_fps=$(parse_average_fps "${BENCHMARK_RESULTS}")
 
 # Calculate the difference and append to the log
 difference=$((current_frames - baseline_frames))
 percentage_change=$(echo "scale=2; ($current_frames - $baseline_frames) / $baseline_frames * 100" | bc)
 echo "Difference from baseline: $difference frames ($percentage_change%)" | tee -a "${BENCHMARK_RESULTS}"
+
+# Send results to discord
+commit_message=$(git log -1 | grep 'Date:' -A 1 | tail -n1)
+result_msg="Benchmark for commit (${commit_message}): ${current_frames} frames, ${average_fps} average FPS, difference from baseline: ${difference} frames (${percentage_change}%)"
+send_discord_message "${DISCORD_WEBHOOK}" "${result_msg}"
 
 # Push results
 git add "${BENCHMARK_RESULTS}"
