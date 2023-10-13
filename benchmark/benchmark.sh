@@ -110,7 +110,7 @@ echo "Difference from baseline: $difference frames ($percentage_change%)" | tee 
 
 # Send results to discord
 commit_message=$(git log -1 | tail -n1 | awk '{$1=$1};1')  # awk command trims whitespace
-result_msg="Benchmark for commit (${commit_message}): ${current_frames} frames, ${average_fps} average FPS, difference from baseline: ${difference} frames (${percentage_change}%)"
+result_msg="\`Benchmark for commit (${commit_message}): ${current_frames} frames, ${average_fps} average FPS, difference from baseline: ${difference} frames (${percentage_change}%)\`"
 send_discord_message "${DISCORD_WEBHOOK}" "${result_msg}"
 
 # Push results
