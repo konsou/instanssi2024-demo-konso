@@ -1,976 +1,0 @@
---------------------------
-commit 740bb47efcd1fe0345f7adfb6657390173d45e6d
-Author: stress-erkki <tomi.javanainen+stress-erkki@gmail.com>
-Date:   Thu Oct 12 14:25:12 2023 +0300
-
-    Add executable bit
-Load Average before benchmark:  0.00, 0.00, 0.00
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60169 ms
-Runtime (setup):      165 ms
-Runtime (draw):       60004 ms
-Frame count (total):  9161
-Frame count (draw):   9161
-Average FPS (draw):   152.67316
-Difference from baseline:  frames (%)
---------------------------
-commit b85ef2f2521725f951a916963a58372277f97093
-Merge: 7e55ea0 0035939
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 14:33:58 2023 +0300
-
-    Merge remote-tracking branch 'origin/main'
-Load Average before benchmark:  0.00, 0.07, 0.06
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60171 ms
-Runtime (setup):      168 ms
-Runtime (draw):       60003 ms
-Frame count (total):  9180
-Frame count (draw):   9180
-Average FPS (draw):   152.99236
-Difference from baseline: -31 frames (0%)
---------------------------
-commit 34c0695e25ceacf689f79f7c92bf6ed35dbb95f8
-Merge: a9f1081 705afb4
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 14:41:50 2023 +0300
-
-    Merge remote-tracking branch 'origin/main'
-Load Average before benchmark:  0.00, 0.05, 0.07
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60168 ms
-Runtime (setup):      168 ms
-Runtime (draw):       60000 ms
-Frame count (total):  9125
-Frame count (draw):   9125
-Average FPS (draw):   152.08334
-Difference from baseline: -86 frames (0%)
---------------------------
-commit 218fc264dfdc8afe5d372aa2b3c05d168594f952
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 15:01:49 2023 +0300
-
-    Remove lock file when benchmark fails
-Load Average before benchmark:  0.00, 0.00, 0.01
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60172 ms
-Runtime (setup):      167 ms
-Runtime (draw):       60005 ms
-Frame count (total):  9254
-Frame count (draw):   9254
-Average FPS (draw):   154.22047
-Difference from baseline: 43 frames (0%)
---------------------------
-commit 9f193a8497a0004b58e860910257032921bd7d66
-Author: stress-erkki <tomi.javanainen+stress-erkki@gmail.com>
-Date:   Thu Oct 12 15:07:42 2023 +0300
-
-    Add benchmark info
-Load Average before benchmark:  0.18, 0.19, 0.09
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
---------------------------
-commit 9f193a8497a0004b58e860910257032921bd7d66
-Author: stress-erkki <tomi.javanainen+stress-erkki@gmail.com>
-Date:   Thu Oct 12 15:07:42 2023 +0300
-
-    Add benchmark info
-Load Average before benchmark:  0.18, 0.19, 0.09
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60169 ms
-Runtime (setup):      168 ms
-Runtime (draw):       60001 ms
-Frame count (total):  6849
-Frame count (draw):   6849
-Average FPS (draw):   114.148094
-Difference from baseline: -2362 frames (-25.00%)
-Difference from baseline: -2362 frames (-25.00%)
---------------------------
-commit b314be3a0c5505c34c0d738b4841111edc9e44ca
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 15:11:42 2023 +0300
-
-    Dummy commit to test benchmarking
-Load Average before benchmark:  0.28, 0.37, 0.18
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60171 ms
-Runtime (setup):      168 ms
-Runtime (draw):       60003 ms
-Frame count (total):  8998
-Frame count (draw):   8998
-Average FPS (draw):   149.95917
-Difference from baseline: -213 frames (-2.00%)
---------------------------
-commit ff4001c912ca5f1a2af3106158a7d6141cfe353c
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 15:55:42 2023 +0300
-
-    Update PROJECT_ROOT definition
-Load Average before benchmark:  0.00, 0.00, 0.00
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60166 ms
-Runtime (setup):      164 ms
-Runtime (draw):       60002 ms
-Frame count (total):  9027
-Frame count (draw):   9027
-Average FPS (draw):   150.44498
-Difference from baseline: -184 frames (-1.00%)
---------------------------
-commit bee96681e218bcdc40c5d6ea4034fb3832dcdd7d
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 16:18:39 2023 +0300
-
-    Remove sudo commands
-Load Average before benchmark:  0.00, 0.00, 0.00
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60171 ms
-Runtime (setup):      167 ms
-Runtime (draw):       60004 ms
-Frame count (total):  9124
-Frame count (draw):   9124
-Average FPS (draw):   152.05653
-Difference from baseline: -87 frames (0%)
---------------------------
-commit 9bbe73a6baedfdac3cac9a4a3da9c6d3505c8bd7
-Merge: 5e321fc 8cf08bd
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 16:38:33 2023 +0300
-
-    Merge remote-tracking branch 'origin/main'
-Load Average before benchmark:  0.00, 0.00, 0.00
-Difference from baseline: -87 frames (0%)
---------------------------
-commit 57b6453f943d31266d655c6a65945ef0f3e84eab
-Merge: 1459c9d 9760fa3
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 16:40:47 2023 +0300
-
-    Merge remote-tracking branch 'origin/main'
-Load Average before benchmark:  0.00, 0.00, 0.00
-Difference from baseline: -87 frames (0%)
---------------------------
-commit 73df737730e6420e15230c8d6ff9581c18cc24c7
-Author: stress-erkki <tomi.javanainen+stress-erkki@gmail.com>
-Date:   Thu Oct 12 16:41:03 2023 +0300
-
-    Add benchmark info
-Load Average before benchmark:  0.00, 0.00, 0.00
-Difference from baseline: -87 frames (0%)
---------------------------
-commit 673d400f4f5a4aaf2fb28847d132f154b7e376dc
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 16:49:51 2023 +0300
-
-    Fix .env loading
-Load Average before benchmark:  0.00, 0.00, 0.00
-Difference from baseline: -87 frames (0%)
---------------------------
-commit 6796180480ceb069d6d5b10fd007bccae2158c57
-Author: stress-erkki <tomi.javanainen+stress-erkki@gmail.com>
-Date:   Thu Oct 12 16:50:04 2023 +0300
-
-    Add benchmark info
-Load Average before benchmark:  0.00, 0.00, 0.00
-Difference from baseline: -87 frames (0%)
---------------------------
-commit f725dbe706d26f8b7b91d5b2600d2c9859d94ba9
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 16:59:29 2023 +0300
-
-    Exit on errors
-Load Average before benchmark:  0.00, 0.02, 0.00
-Difference from baseline: -87 frames (0%)
---------------------------
-commit 9136d1116b7d60adb85a142b936e3ab14bfb07e9
-Author: stress-erkki <tomi.javanainen+stress-erkki@gmail.com>
-Date:   Thu Oct 12 17:00:04 2023 +0300
-
-    Add benchmark info
-Load Average before benchmark:  0.00, 0.01, 0.00
-Difference from baseline: -87 frames (0%)
---------------------------
-commit 0a835e79309d7a24f806d3ed8b5ec9bce86372ad
-Author: stress-erkki <tomi.javanainen+stress-erkki@gmail.com>
-Date:   Thu Oct 12 17:00:31 2023 +0300
-
-    Add benchmark info
-Load Average before benchmark:  0.00, 0.01, 0.00
-Difference from baseline: -87 frames (0%)
-2023-10-12 17:27 | 
---------------------------
-commit 4fe2f6b3a78142ca60149b3fdcde8e62ea9477e3
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 17:26:44 2023 +0300
-
-    Fix not exiting on java command errors
-Load Average before benchmark:  0.00, 0.00, 0.00
-2023-10-12 17:28 | 
---------------------------
-commit 4fe2f6b3a78142ca60149b3fdcde8e62ea9477e3
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 17:26:44 2023 +0300
-
-    Fix not exiting on java command errors
-Load Average before benchmark:  0.05, 0.01, 0.00
-2023-10-12 17:32 | 
---------------------------
-commit 2a379f357e34101f1bb909de308a646f3f6262f9
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 17:31:14 2023 +0300
-
-    Delete lockfile on exit
-Load Average before benchmark:  0.00, 0.00, 0.00
---------------------------
-commit 4848bddeb2657b4e5ce85655c269ba3c6deda812
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 17:37:49 2023 +0300
-
-    Fix logging?
-Load Average before benchmark:  0.00, 0.00, 0.00
-2023-10-12 17:38 | java.awt.AWTError: Can't connect to X11 window server using 'XVFB_DISPLAY_NUM' as the value of the DISPLAY variable.
-2023-10-12 17:38 | 	at java.desktop/sun.awt.X11GraphicsEnvironment.initDisplay(Native Method)
-2023-10-12 17:38 | 	at java.desktop/sun.awt.X11GraphicsEnvironment$1.run(X11GraphicsEnvironment.java:105)
-2023-10-12 17:38 | 	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318)
-2023-10-12 17:38 | 	at java.desktop/sun.awt.X11GraphicsEnvironment.initStatic(X11GraphicsEnvironment.java:64)
-2023-10-12 17:38 | 	at java.desktop/sun.awt.X11GraphicsEnvironment.<clinit>(X11GraphicsEnvironment.java:59)
-2023-10-12 17:38 | 	at java.desktop/sun.awt.PlatformGraphicsInfo.createGE(PlatformGraphicsInfo.java:36)
-2023-10-12 17:38 | 	at java.desktop/java.awt.GraphicsEnvironment$LocalGE.createGE(GraphicsEnvironment.java:93)
-2023-10-12 17:38 | 	at java.desktop/java.awt.GraphicsEnvironment$LocalGE.<clinit>(GraphicsEnvironment.java:84)
-2023-10-12 17:38 | 	at java.desktop/java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment(GraphicsEnvironment.java:106)
-2023-10-12 17:38 | 	at java.desktop/sun.awt.X11.XToolkit.<clinit>(XToolkit.java:224)
-2023-10-12 17:38 | 	at java.desktop/sun.awt.PlatformGraphicsInfo.createToolkit(PlatformGraphicsInfo.java:40)
-2023-10-12 17:38 | 	at java.desktop/java.awt.Toolkit.getDefaultToolkit(Toolkit.java:599)
-2023-10-12 17:38 | 	at processing.awt.ShimAWT.initRun(ShimAWT.java:695)
-2023-10-12 17:38 | 	at processing.core.PApplet.runSketch(PApplet.java:10058)
-2023-10-12 17:38 | 	at processing.core.PApplet.main(PApplet.java:9845)
-2023-10-12 17:38 | 	at Instanssi2024DemoKonso.main(Instanssi2024DemoKonso.java:48)
-Difference from baseline: -87 frames (0%)
---------------------------
-commit 7091f51edfd3f85d995f7ce044fffab7fc31fe69
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 17:42:38 2023 +0300
-
-    Fix logging??
-Load Average before benchmark:  0.00, 0.00, 0.00
-2023-10-12 17:43 | java.awt.AWTError: Can't connect to X11 window server using 'XVFB_DISPLAY_NUM' as the value of the DISPLAY variable.
-2023-10-12 17:43 | 	at java.desktop/sun.awt.X11GraphicsEnvironment.initDisplay(Native Method)
-2023-10-12 17:43 | 	at java.desktop/sun.awt.X11GraphicsEnvironment$1.run(X11GraphicsEnvironment.java:105)
-2023-10-12 17:43 | 	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318)
-2023-10-12 17:43 | 	at java.desktop/sun.awt.X11GraphicsEnvironment.initStatic(X11GraphicsEnvironment.java:64)
-2023-10-12 17:43 | 	at java.desktop/sun.awt.X11GraphicsEnvironment.<clinit>(X11GraphicsEnvironment.java:59)
-2023-10-12 17:43 | 	at java.desktop/sun.awt.PlatformGraphicsInfo.createGE(PlatformGraphicsInfo.java:36)
-2023-10-12 17:43 | 	at java.desktop/java.awt.GraphicsEnvironment$LocalGE.createGE(GraphicsEnvironment.java:93)
-2023-10-12 17:43 | 	at java.desktop/java.awt.GraphicsEnvironment$LocalGE.<clinit>(GraphicsEnvironment.java:84)
-2023-10-12 17:43 | 	at java.desktop/java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment(GraphicsEnvironment.java:106)
-2023-10-12 17:43 | 	at java.desktop/sun.awt.X11.XToolkit.<clinit>(XToolkit.java:224)
-2023-10-12 17:43 | 	at java.desktop/sun.awt.PlatformGraphicsInfo.createToolkit(PlatformGraphicsInfo.java:40)
-2023-10-12 17:43 | 	at java.desktop/java.awt.Toolkit.getDefaultToolkit(Toolkit.java:599)
-2023-10-12 17:43 | 	at processing.awt.ShimAWT.initRun(ShimAWT.java:695)
-2023-10-12 17:43 | 	at processing.core.PApplet.runSketch(PApplet.java:10058)
-2023-10-12 17:43 | 	at processing.core.PApplet.main(PApplet.java:9845)
-2023-10-12 17:43 | 	at Instanssi2024DemoKonso.main(Instanssi2024DemoKonso.java:48)
-Difference from baseline: -87 frames (0%)
---------------------------
-commit 2416422e037effae7fc4c76fcbdea7c91f859ba5
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 17:48:48 2023 +0300
-
-    Fix logging???
-Load Average before benchmark:  0.00, 0.00, 0.00
-Running benchmark failed
---------------------------
-commit a3a905170bf099f6492108b37d951fb860ffa13b
-Author: stress-erkki <tomi.javanainen+stress-erkki@gmail.com>
-Date:   Thu Oct 12 17:50:40 2023 +0300
-
-    Add executable flag
-Load Average before benchmark:  0.00, 0.00, 0.00
-Running benchmark failed
---------------------------
-commit b9781ae6673a2e8506379c09ee377f23e158c8a8
-Merge: 36bcc55 a3a9051
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 17:52:19 2023 +0300
-
-    Merge remote-tracking branch 'origin/main'
-Load Average before benchmark:  0.00, 0.00, 0.00
-Running benchmark failed
---------------------------
-commit b9781ae6673a2e8506379c09ee377f23e158c8a8
-Merge: 36bcc55 a3a9051
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 17:52:19 2023 +0300
-
-    Merge remote-tracking branch 'origin/main'
-Load Average before benchmark:  0.00, 0.00, 0.00
-Running benchmark failed
---------------------------
-commit ef507fbe2b629770287a9181755f9c4f55acac9d
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 17:57:32 2023 +0300
-
-    Logging tweaks
-Load Average before benchmark:  0.00, 0.00, 0.00
-java.awt.AWTError: Can't connect to X11 window server using ':99' as the value of the DISPLAY variable.
-	at java.desktop/sun.awt.X11GraphicsEnvironment.initDisplay(Native Method)
-	at java.desktop/sun.awt.X11GraphicsEnvironment$1.run(X11GraphicsEnvironment.java:105)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318)
-	at java.desktop/sun.awt.X11GraphicsEnvironment.initStatic(X11GraphicsEnvironment.java:64)
-	at java.desktop/sun.awt.X11GraphicsEnvironment.<clinit>(X11GraphicsEnvironment.java:59)
-	at java.desktop/sun.awt.PlatformGraphicsInfo.createGE(PlatformGraphicsInfo.java:36)
-	at java.desktop/java.awt.GraphicsEnvironment$LocalGE.createGE(GraphicsEnvironment.java:93)
-	at java.desktop/java.awt.GraphicsEnvironment$LocalGE.<clinit>(GraphicsEnvironment.java:84)
-	at java.desktop/java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment(GraphicsEnvironment.java:106)
-	at java.desktop/sun.awt.X11.XToolkit.<clinit>(XToolkit.java:224)
-	at java.desktop/sun.awt.PlatformGraphicsInfo.createToolkit(PlatformGraphicsInfo.java:40)
-	at java.desktop/java.awt.Toolkit.getDefaultToolkit(Toolkit.java:599)
-	at processing.awt.ShimAWT.initRun(ShimAWT.java:695)
-	at processing.core.PApplet.runSketch(PApplet.java:10058)
-	at processing.core.PApplet.main(PApplet.java:9845)
-	at Instanssi2024DemoKonso.main(Instanssi2024DemoKonso.java:48)
-Running benchmark failed
---------------------------
-commit ef507fbe2b629770287a9181755f9c4f55acac9d
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 17:57:32 2023 +0300
-
-    Logging tweaks
-Load Average before benchmark:  0.16, 0.03, 0.01
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60167 ms
-Runtime (setup):      167 ms
-Runtime (draw):       60000 ms
-Frame count (total):  8965
-Frame count (draw):   8965
-Average FPS (draw):   149.41667
-Difference from baseline: -246 frames (-2.00%)
---------------------------
-commit 8082917d9db50b66049ce40322b637368a23d4ca
-Author: stress-erkki <tomi.javanainen+stress-erkki@gmail.com>
-Date:   Thu Oct 12 18:00:18 2023 +0300
-
-    Add benchmark info
-Load Average before benchmark:  0.89, 0.33, 0.12
-java.awt.AWTError: Can't connect to X11 window server using ':99' as the value of the DISPLAY variable.
-	at java.desktop/sun.awt.X11GraphicsEnvironment.initDisplay(Native Method)
-	at java.desktop/sun.awt.X11GraphicsEnvironment$1.run(X11GraphicsEnvironment.java:105)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318)
-	at java.desktop/sun.awt.X11GraphicsEnvironment.initStatic(X11GraphicsEnvironment.java:64)
-	at java.desktop/sun.awt.X11GraphicsEnvironment.<clinit>(X11GraphicsEnvironment.java:59)
-	at java.desktop/sun.awt.PlatformGraphicsInfo.createGE(PlatformGraphicsInfo.java:36)
-	at java.desktop/java.awt.GraphicsEnvironment$LocalGE.createGE(GraphicsEnvironment.java:93)
-	at java.desktop/java.awt.GraphicsEnvironment$LocalGE.<clinit>(GraphicsEnvironment.java:84)
-	at java.desktop/java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment(GraphicsEnvironment.java:106)
-	at java.desktop/sun.awt.X11.XToolkit.<clinit>(XToolkit.java:224)
-	at java.desktop/sun.awt.PlatformGraphicsInfo.createToolkit(PlatformGraphicsInfo.java:40)
-	at java.desktop/java.awt.Toolkit.getDefaultToolkit(Toolkit.java:599)
-	at processing.awt.ShimAWT.initRun(ShimAWT.java:695)
-	at processing.core.PApplet.runSketch(PApplet.java:10058)
-	at processing.core.PApplet.main(PApplet.java:9845)
-	at Instanssi2024DemoKonso.main(Instanssi2024DemoKonso.java:48)
-Running benchmark failed
---------------------------
-commit 8082917d9db50b66049ce40322b637368a23d4ca
-Author: stress-erkki <tomi.javanainen+stress-erkki@gmail.com>
-Date:   Thu Oct 12 18:00:18 2023 +0300
-
-    Add benchmark info
-Load Average before benchmark:  0.03, 0.16, 0.09
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60168 ms
-Runtime (setup):      164 ms
-Runtime (draw):       60004 ms
-Frame count (total):  9191
-Frame count (draw):   9191
-Average FPS (draw):   153.17313
-Difference from baseline: -20 frames (0%)
---------------------------
-commit ff68f8601256219f335a6e8b0c7b41a5ab76cfc6
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 18:22:21 2023 +0300
-
-    Minor cleanup
-Load Average before benchmark:  0.00, 0.00, 0.03
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60169 ms
-Runtime (setup):      165 ms
-Runtime (draw):       60004 ms
-Frame count (total):  8955
-Frame count (draw):   8955
-Average FPS (draw):   149.24005
-Difference from baseline: -256 frames (-2.00%)
---------------------------
-Benchmark started at 2023-10-12 20:00
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:12: error: cannot find symbol
-    Colors colors;
-    ^
-  symbol:   class Colors
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:14: error: cannot find symbol
-    Settings settings = new Settings();
-    ^
-  symbol:   class Settings
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:14: error: cannot find symbol
-    Settings settings = new Settings();
-                            ^
-  symbol:   class Settings
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:31: error: cannot find symbol
-        colors = new Colors();
-                     ^
-  symbol:   class Colors
-  location: class Instanssi2024DemoKonso
-4 errors
-Compiling failed
---------------------------
-Benchmark started at 2023-10-12 20:01
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:12: error: cannot find symbol
-    Colors colors;
-    ^
-  symbol:   class Colors
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:14: error: cannot find symbol
-    Settings settings = new Settings();
-    ^
-  symbol:   class Settings
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:14: error: cannot find symbol
-    Settings settings = new Settings();
-                            ^
-  symbol:   class Settings
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:31: error: cannot find symbol
-        colors = new Colors();
-                     ^
-  symbol:   class Colors
-  location: class Instanssi2024DemoKonso
-4 errors
-Compiling failed
---------------------------
-Benchmark started at 2023-10-12 20:02
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:12: error: cannot find symbol
-    Colors colors;
-    ^
-  symbol:   class Colors
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:14: error: cannot find symbol
-    Settings settings = new Settings();
-    ^
-  symbol:   class Settings
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:14: error: cannot find symbol
-    Settings settings = new Settings();
-                            ^
-  symbol:   class Settings
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:31: error: cannot find symbol
-        colors = new Colors();
-                     ^
-  symbol:   class Colors
-  location: class Instanssi2024DemoKonso
-4 errors
-Compiling failed
---------------------------
-Benchmark started at 2023-10-12 20:03
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:12: error: cannot find symbol
-    Colors colors;
-    ^
-  symbol:   class Colors
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:14: error: cannot find symbol
-    Settings settings = new Settings();
-    ^
-  symbol:   class Settings
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:14: error: cannot find symbol
-    Settings settings = new Settings();
-                            ^
-  symbol:   class Settings
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:31: error: cannot find symbol
-        colors = new Colors();
-                     ^
-  symbol:   class Colors
-  location: class Instanssi2024DemoKonso
-4 errors
-Compiling failed
---------------------------
-Benchmark started at 2023-10-12 20:04
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:12: error: cannot find symbol
-    Colors colors;
-    ^
-  symbol:   class Colors
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:14: error: cannot find symbol
-    Settings settings = new Settings();
-    ^
-  symbol:   class Settings
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:14: error: cannot find symbol
-    Settings settings = new Settings();
-                            ^
-  symbol:   class Settings
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:31: error: cannot find symbol
-        colors = new Colors();
-                     ^
-  symbol:   class Colors
-  location: class Instanssi2024DemoKonso
-4 errors
-Compiling failed
---------------------------
-Benchmark started at 2023-10-12 20:05
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:12: error: cannot find symbol
-    Colors colors;
-    ^
-  symbol:   class Colors
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:14: error: cannot find symbol
-    Settings settings = new Settings();
-    ^
-  symbol:   class Settings
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:14: error: cannot find symbol
-    Settings settings = new Settings();
-                            ^
-  symbol:   class Settings
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:31: error: cannot find symbol
-        colors = new Colors();
-                     ^
-  symbol:   class Colors
-  location: class Instanssi2024DemoKonso
-4 errors
-Compiling failed
---------------------------
-Benchmark started at 2023-10-12 20:06
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:12: error: cannot find symbol
-    Colors colors;
-    ^
-  symbol:   class Colors
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:14: error: cannot find symbol
-    Settings settings = new Settings();
-    ^
-  symbol:   class Settings
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:14: error: cannot find symbol
-    Settings settings = new Settings();
-                            ^
-  symbol:   class Settings
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:31: error: cannot find symbol
-        colors = new Colors();
-                     ^
-  symbol:   class Colors
-  location: class Instanssi2024DemoKonso
-4 errors
-Compiling failed
---------------------------
-Benchmark started at 2023-10-12 20:07
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:12: error: cannot find symbol
-    Colors colors;
-    ^
-  symbol:   class Colors
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:14: error: cannot find symbol
-    Settings settings = new Settings();
-    ^
-  symbol:   class Settings
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:14: error: cannot find symbol
-    Settings settings = new Settings();
-                            ^
-  symbol:   class Settings
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:31: error: cannot find symbol
-        colors = new Colors();
-                     ^
-  symbol:   class Colors
-  location: class Instanssi2024DemoKonso
-4 errors
-Compiling failed
---------------------------
-Benchmark started at 2023-10-12 20:08
-commit a46c490cf757881d05ddcd3362953c7dea1b06f7
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 20:07:16 2023 +0300
-
-    Fix infinite benchmark runs when failing compilation
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:12: error: cannot find symbol
-    Colors colors;
-    ^
-  symbol:   class Colors
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:14: error: cannot find symbol
-    Settings settings = new Settings();
-    ^
-  symbol:   class Settings
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:14: error: cannot find symbol
-    Settings settings = new Settings();
-                            ^
-  symbol:   class Settings
-  location: class Instanssi2024DemoKonso
-/home/erkki/instanssi2024DemoKonso/src/Instanssi2024DemoKonso.java:31: error: cannot find symbol
-        colors = new Colors();
-                     ^
-  symbol:   class Colors
-  location: class Instanssi2024DemoKonso
-4 errors
-Compiling failed
---------------------------
-Benchmark started at 2023-10-12 20:12
-commit 9627db719609950d92cf1dd021be28032aeb9abf
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 20:11:42 2023 +0300
-
-    Compile all java files
-Load Average before benchmark:  0.00, 0.01, 0.00
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60172 ms
-Runtime (setup):      168 ms
-Runtime (draw):       60004 ms
-Frame count (total):  9118
-Frame count (draw):   9118
-Average FPS (draw):   151.95654
-Difference from baseline: -93 frames (-1.00%)
---------------------------
-Benchmark started at 2023-10-12 20:25
-commit 3e434263d75a25a3cb95de0984a5fe8f1b16ce58
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 20:24:12 2023 +0300
-
-    Benchmarking tweaks
-Load Average before benchmark:  0.00, 0.02, 0.03
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60166 ms
-Runtime (setup):      165 ms
-Runtime (draw):       60001 ms
-Frame count (total):  9039
-Frame count (draw):   9039
-Average FPS (draw):   150.64749
-Difference from baseline: -172 frames (-1.00%)
-Error: No configurations found in /home/erkki/instanssi2024DemoKonso/benchmark/.env.
---------------------------
-Benchmark started at 2023-10-12 20:31
-commit 62429f408c244a36d6891588cbbf15c2b482f566
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 20:28:45 2023 +0300
-
-    Add dummy file
-Load Average before benchmark:  0.00, 0.09, 0.08
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60166 ms
-Runtime (setup):      164 ms
-Runtime (draw):       60002 ms
-Frame count (total):  9067
-Frame count (draw):   9067
-Average FPS (draw):   151.11163
-Difference from baseline: -144 frames (-1.00%)
---------------------------
-Benchmark started at 2023-10-12 20:53
-commit 6fba1fa71cf38e86576b057f8f020aac92377a37
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 20:50:18 2023 +0300
-
-    Log git pull errors
-Load Average before benchmark:  0.00, 0.00, 0.02
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60172 ms
-Runtime (setup):      167 ms
-Runtime (draw):       60005 ms
-Frame count (total):  9113
-Frame count (draw):   9113
-Average FPS (draw):   151.87068
-Difference from baseline: -98 frames (-1.00%)
---------------------------
-Benchmark started at 2023-10-12 21:04
-commit 716865a052dac911e846524c8b2c5df3f1666325
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 21:03:45 2023 +0300
-
-    Always overwrite local changes
-Load Average before benchmark:  0.01, 0.04, 0.06
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60170 ms
-Runtime (setup):      168 ms
-Runtime (draw):       60002 ms
-Frame count (total):  9089
-Frame count (draw):   9089
-Average FPS (draw):   151.47829
-Difference from baseline: -122 frames (-1.00%)
---------------------------
-Benchmark started at 2023-10-12 22:32
-commit 6f97e39bc2e9be0bac871bc6b28412635fa65b10
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Thu Oct 12 22:31:53 2023 +0300
-
-    Fix building to use maven
-Load Average before benchmark:  0.00, 0.00, 0.00
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60171 ms
-Runtime (setup):      167 ms
-Runtime (draw):       60004 ms
-Frame count (total):  9108
-Frame count (draw):   9108
-Average FPS (draw):   151.78987
-Difference from baseline: -103 frames (-1.00%)
---------------------------
-Benchmark started at 2023-10-13 01:32
-commit 32832a6273ef6b0d4d55bb54ccbb3d864abc3f8a
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Fri Oct 13 01:30:52 2023 +0300
-
-    Run benchmark with maven
-Load averages before benchmark:  0.02, 0.02, 0.00
-[[1;34mINFO[m] Scanning for projects...
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m------< [0;36mcodes.konso.demo.instanssi2024:konso-demo-instanssi2024[0;1m >-------[m
-[[1;34mINFO[m] [1mBuilding konso-demo-instanssi2024 1.0[m
-[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m--- [0;32mexec-maven-plugin:3.1.0:java[m [1m(default-cli)[m @ [36mkonso-demo-instanssi2024[0;1m ---[m
-Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.4.2/plexus-utils-3.4.2.pom
-Progress (1): 2.8/8.2 kBProgress (1): 5.5/8.2 kBProgress (1): 8.2 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.4.2/plexus-utils-3.4.2.pom (8.2 kB at 44 kB/s)
-Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/8/plexus-8.pom
-Progress (1): 2.8/25 kBProgress (1): 5.5/25 kBProgress (1): 8.3/25 kBProgress (1): 11/25 kB Progress (1): 14/25 kBProgress (1): 17/25 kBProgress (1): 19/25 kBProgress (1): 22/25 kBProgress (1): 25/25 kBProgress (1): 25 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/8/plexus-8.pom (25 kB at 1.1 MB/s)
-Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-component-annotations/2.1.1/plexus-component-annotations-2.1.1.pom
-Progress (1): 770 B                   Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-component-annotations/2.1.1/plexus-component-annotations-2.1.1.pom (770 B at 45 kB/s)
-Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/2.1.1/plexus-containers-2.1.1.pom
-Progress (1): 2.8/6.0 kBProgress (1): 5.5/6.0 kBProgress (1): 6.0 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/2.1.1/plexus-containers-2.1.1.pom (6.0 kB at 355 kB/s)
-Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/6.5/plexus-6.5.pom
-Progress (1): 2.8/26 kBProgress (1): 5.5/26 kBProgress (1): 8.3/26 kBProgress (1): 11/26 kB Progress (1): 14/26 kBProgress (1): 18/26 kBProgress (1): 22/26 kBProgress (1): 26 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/6.5/plexus-6.5.pom (26 kB at 1.4 MB/s)
-Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-exec/1.3/commons-exec-1.3.pom
-Progress (1): 4.1/11 kBProgress (1): 8.2/11 kBProgress (1): 11 kB                       Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-exec/1.3/commons-exec-1.3.pom (11 kB at 687 kB/s)
-Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/35/commons-parent-35.pom
-Progress (1): 4.1/58 kBProgress (1): 8.2/58 kBProgress (1): 12/58 kB Progress (1): 16/58 kBProgress (1): 20/58 kBProgress (1): 24/58 kBProgress (1): 28/58 kBProgress (1): 32/58 kBProgress (1): 36/58 kBProgress (1): 40/58 kBProgress (1): 44/58 kBProgress (1): 49/58 kBProgress (1): 53/58 kBProgress (1): 57/58 kBProgress (1): 58 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/35/commons-parent-35.pom (58 kB at 2.1 MB/s)
-Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/15/apache-15.pom
-Progress (1): 4.1/15 kBProgress (1): 8.2/15 kBProgress (1): 12/15 kB Progress (1): 15 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/15/apache-15.pom (15 kB at 952 kB/s)
-Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.4.2/plexus-utils-3.4.2.jar
-Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-component-annotations/2.1.1/plexus-component-annotations-2.1.1.jar
-Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-exec/1.3/commons-exec-1.3.jar
-Progress (1): 4.1/4.1 kBProgress (1): 4.1 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-component-annotations/2.1.1/plexus-component-annotations-2.1.1.jar (4.1 kB at 241 kB/s)
-Progress (1): 2.8/54 kBProgress (1): 5.5/54 kBProgress (1): 8.3/54 kBProgress (1): 11/54 kB Progress (1): 14/54 kBProgress (1): 17/54 kBProgress (1): 19/54 kBProgress (1): 22/54 kBProgress (1): 25/54 kBProgress (1): 28/54 kBProgress (1): 30/54 kBProgress (1): 33/54 kBProgress (2): 33/54 kB | 4.1/267 kBProgress (2): 36/54 kB | 4.1/267 kBProgress (2): 36/54 kB | 8.2/267 kBProgress (2): 39/54 kB | 8.2/267 kBProgress (2): 39/54 kB | 12/267 kB Progress (2): 41/54 kB | 12/267 kBProgress (2): 41/54 kB | 16/267 kBProgress (2): 44/54 kB | 16/267 kBProgress (2): 47/54 kB | 16/267 kBProgress (2): 50/54 kB | 16/267 kBProgress (2): 50/54 kB | 20/267 kBProgress (2): 52/54 kB | 20/267 kBProgress (2): 52/54 kB | 25/267 kBProgress (2): 54 kB | 25/267 kB   Progress (2): 54 kB | 29/267 kBProgress (2): 54 kB | 33/267 kBProgress (2): 54 kB | 37/267 kBProgress (2): 54 kB | 41/267 kBProgress (2): 54 kB | 45/267 kBProgress (2): 54 kB | 49/267 kBProgress (2): 54 kB | 53/267 kBProgress (2): 54 kB | 57/267 kBProgress (2): 54 kB | 61/267 kBProgress (2): 54 kB | 66/267 kBProgress (2): 54 kB | 70/267 kBProgress (2): 54 kB | 74/267 kBProgress (2): 54 kB | 78/267 kBProgress (2): 54 kB | 82/267 kBProgress (2): 54 kB | 86/267 kBProgress (2): 54 kB | 90/267 kB                               Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-exec/1.3/commons-exec-1.3.jar (54 kB at 1.3 MB/s)
-Progress (1): 94/267 kBProgress (1): 98/267 kBProgress (1): 102/267 kBProgress (1): 106/267 kBProgress (1): 111/267 kBProgress (1): 115/267 kBProgress (1): 119/267 kBProgress (1): 123/267 kBProgress (1): 127/267 kBProgress (1): 131/267 kBProgress (1): 135/267 kBProgress (1): 139/267 kBProgress (1): 143/267 kBProgress (1): 147/267 kBProgress (1): 152/267 kBProgress (1): 156/267 kBProgress (1): 160/267 kBProgress (1): 164/267 kBProgress (1): 168/267 kBProgress (1): 172/267 kBProgress (1): 176/267 kBProgress (1): 180/267 kBProgress (1): 184/267 kBProgress (1): 188/267 kBProgress (1): 193/267 kBProgress (1): 197/267 kBProgress (1): 201/267 kBProgress (1): 205/267 kBProgress (1): 209/267 kBProgress (1): 213/267 kBProgress (1): 217/267 kBProgress (1): 221/267 kBProgress (1): 225/267 kBProgress (1): 229/267 kBProgress (1): 233/267 kBProgress (1): 238/267 kBProgress (1): 242/267 kBProgress (1): 246/267 kBProgress (1): 250/267 kBProgress (1): 254/267 kBProgress (1): 258/267 kBProgress (1): 262/267 kBProgress (1): 266/267 kBProgress (1): 267 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.4.2/plexus-utils-3.4.2.jar (267 kB at 4.5 MB/s)
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60184 ms
-Runtime (setup):      181 ms
-Runtime (draw):       60003 ms
-Frame count (total):  9011
-Frame count (draw):   9011
-Average FPS (draw):   150.17583
-[0m[0mDifference from baseline: -200 frames (-2.00%)
---------------------------
-Benchmark started at 2023-10-13 12:52
-commit 88c362a37a8504e46faffacb514d4d60e27ba2d4
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Fri Oct 13 12:51:18 2023 +0300
-
-    Move grid to a separate class
-Load averages before benchmark:  0.00, 0.00, 0.00
-[[1;34mINFO[m] Scanning for projects...
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m------< [0;36mcodes.konso.demo.instanssi2024:konso-demo-instanssi2024[0;1m >-------[m
-[[1;34mINFO[m] [1mBuilding konso-demo-instanssi2024 1.0[m
-[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m--- [0;32mexec-maven-plugin:3.1.0:java[m [1m(default-cli)[m @ [36mkonso-demo-instanssi2024[0;1m ---[m
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60179 ms
-Runtime (setup):      176 ms
-Runtime (draw):       60003 ms
-Frame count (total):  9074
-Frame count (draw):   9074
-Average FPS (draw):   151.22577
-[0m[0mDifference from baseline: -137 frames (-1.00%)
---------------------------
-Benchmark started at 2023-10-13 13:19
-commit 9a0e19b617a0994bacb28b2c4e8c68d970040c45
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Fri Oct 13 13:18:22 2023 +0300
-
-    Add venv.sh
-Load averages before benchmark:  0.00, 0.00, 0.00
-[[1;34mINFO[m] Scanning for projects...
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m------< [0;36mcodes.konso.demo.instanssi2024:konso-demo-instanssi2024[0;1m >-------[m
-[[1;34mINFO[m] [1mBuilding konso-demo-instanssi2024 1.0[m
-[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m--- [0;32mexec-maven-plugin:3.1.0:java[m [1m(default-cli)[m @ [36mkonso-demo-instanssi2024[0;1m ---[m
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60188 ms
-Runtime (setup):      187 ms
-Runtime (draw):       60001 ms
-Frame count (total):  9110
-Frame count (draw):   9110
-Average FPS (draw):   151.83081
-[0m[0mDifference from baseline: -101 frames (-1.00%)
---------------------------
-Benchmark started at 2023-10-13 14:09
-commit 1d1e721344956cc22212bef5edc4a17238dadebe
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Fri Oct 13 14:08:56 2023 +0300
-
-    Use load_venv
-Load averages before benchmark:  0.13, 0.20, 0.13
-[[1;34mINFO[m] Scanning for projects...
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m------< [0;36mcodes.konso.demo.instanssi2024:konso-demo-instanssi2024[0;1m >-------[m
-[[1;34mINFO[m] [1mBuilding konso-demo-instanssi2024 1.0[m
-[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m--- [0;32mexec-maven-plugin:3.1.0:java[m [1m(default-cli)[m @ [36mkonso-demo-instanssi2024[0;1m ---[m
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60179 ms
-Runtime (setup):      176 ms
-Runtime (draw):       60003 ms
-Frame count (total):  9097
-Frame count (draw):   9097
-Average FPS (draw):   151.6091
-[0m[0mDifference from baseline: -114 frames (-1.00%)
---------------------------
-Benchmark started at 2023-10-13 14:11
-commit b219784b4eca537e6c440de2060960860dd7d10f
-Author: stress-erkki <tomi.javanainen+stress-erkki@gmail.com>
-Date:   Fri Oct 13 14:10:06 2023 +0300
-
-    Add benchmark info
-Load averages before benchmark:  0.26, 0.35, 0.20
-[[1;34mINFO[m] Scanning for projects...
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m------< [0;36mcodes.konso.demo.instanssi2024:konso-demo-instanssi2024[0;1m >-------[m
-[[1;34mINFO[m] [1mBuilding konso-demo-instanssi2024 1.0[m
-[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m--- [0;32mexec-maven-plugin:3.1.0:java[m [1m(default-cli)[m @ [36mkonso-demo-instanssi2024[0;1m ---[m
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60176 ms
-Runtime (setup):      173 ms
-Runtime (draw):       60003 ms
-Frame count (total):  8937
-Frame count (draw):   8937
-Average FPS (draw):   148.94257
-[0m[0mDifference from baseline: -274 frames (-2.00%)
---------------------------
-Benchmark started at 2023-10-13 14:52
-commit 98a1266b027927f0479d940ca99995a3c946651a
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Fri Oct 13 14:51:38 2023 +0300
-
-    Send results via discord
-Load averages before benchmark:  0.00, 0.00, 0.00
-[[1;34mINFO[m] Scanning for projects...
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m------< [0;36mcodes.konso.demo.instanssi2024:konso-demo-instanssi2024[0;1m >-------[m
-[[1;34mINFO[m] [1mBuilding konso-demo-instanssi2024 1.0[m
-[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m--- [0;32mexec-maven-plugin:3.1.0:java[m [1m(default-cli)[m @ [36mkonso-demo-instanssi2024[0;1m ---[m
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60179 ms
-Runtime (setup):      174 ms
-Runtime (draw):       60005 ms
-Frame count (total):  9067
-Frame count (draw):   9067
-Average FPS (draw):   151.10408
-[0m[0mDifference from baseline: -144 frames (-1.00%)
---------------------------
-Benchmark started at 2023-10-13 14:59
-commit c08585bcc6b9d3c3e838c3a4016a99c431ac9de1
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Fri Oct 13 14:58:38 2023 +0300
-
-    Fix commit message parsing
-Load averages before benchmark:  0.00, 0.10, 0.07
-[[1;34mINFO[m] Scanning for projects...
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m------< [0;36mcodes.konso.demo.instanssi2024:konso-demo-instanssi2024[0;1m >-------[m
-[[1;34mINFO[m] [1mBuilding konso-demo-instanssi2024 1.0[m
-[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m--- [0;32mexec-maven-plugin:3.1.0:java[m [1m(default-cli)[m @ [36mkonso-demo-instanssi2024[0;1m ---[m
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60181 ms
-Runtime (setup):      179 ms
-Runtime (draw):       60002 ms
-Frame count (total):  9115
-Frame count (draw):   9115
-Average FPS (draw):   151.9116
-[0m[0mDifference from baseline: -96 frames (-1.00%)
---------------------------
-Benchmark started at 2023-10-13 15:04
-commit 8c02b99e6861fd7293c0da315dac219f13e1ae75
-Author: Tomi Javanainen <tomi.javanainen@gmail.com>
-Date:   Fri Oct 13 15:02:58 2023 +0300
-
-    Make discord message be a code block
-Load averages before benchmark:  0.02, 0.16, 0.13
-[[1;34mINFO[m] Scanning for projects...
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m------< [0;36mcodes.konso.demo.instanssi2024:konso-demo-instanssi2024[0;1m >-------[m
-[[1;34mINFO[m] [1mBuilding konso-demo-instanssi2024 1.0[m
-[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m--- [0;32mexec-maven-plugin:3.1.0:java[m [1m(default-cli)[m @ [36mkonso-demo-instanssi2024[0;1m ---[m
-Automatic benchmark mode
-Setting benchmark runtime to 60 seconds
-Setting FPS limit to 999
-Runtime (total):      60185 ms
-Runtime (setup):      185 ms
-Runtime (draw):       60000 ms
-Frame count (total):  8972
-Frame count (draw):   8972
-Average FPS (draw):   149.53333
-[0m[0mDifference from baseline: -239 frames (-2.00%)
