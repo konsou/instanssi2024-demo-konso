@@ -25,6 +25,7 @@ load_venv() {
 
     # Source the file and export the variables
     set -a
+    # shellcheck disable=SC1090
     source "$1"
     set +a
 }
