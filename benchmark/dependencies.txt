@@ -2,3 +2,4 @@ openjdk-17-jdk
 xvfb
 curl
 maven
+python3
