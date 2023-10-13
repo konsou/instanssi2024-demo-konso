@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import sys
 import json
-from os.path import isfile
-from typing import Dict
+import threading
+from typing import Dict, List
 
 BASELINE_FILE = 'results/benchmark-baseline.jsonl'
 
@@ -77,9 +77,39 @@ def read_baseline_data(filename) -> Dict:
         return {}
 
 
+def read_from_stdin(timeout=2) -> List:  # 2 seconds timeout by default
+    """Attempt to read from stdin, returning an empty list if the timeout is exceeded."""
+    result = []
+
+    def target():
+        while True:
+            line = sys.stdin.readline()
+            if not line:
+                break
+            result.append(line)
+
+    thread = threading.Thread(target=target)
+    thread.daemon = True
+    thread.start()
+    thread.join(timeout)
+
+    if thread.is_alive():
+        # Timeout reached
+        return []
+
+    return result
+
+
 def main():
-    # Read key-value pairs from stdin
-    raw_data = sys.stdin.readlines()
+    if len(sys.argv) < 2:
+        print(f"ERROR: no output filename specified.")
+        sys.exit(1)
+
+    raw_data = read_from_stdin(timeout=2)
+    if not raw_data:
+        print("ERROR: no input in stdin. Exiting.")
+        sys.exit(1)
+
     data_dict = {}
     for line in raw_data:
         key, value = line.strip().split('=')
