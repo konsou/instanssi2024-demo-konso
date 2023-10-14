@@ -103,6 +103,7 @@ load_avg=$(uptime | awk -F'[a-z]:' '{ print $2 }')
 declare -A results_array
 
 # Capture current commit details
+results_array["benchmark_status"]="SUCCESS"
 results_array["timestamp"]=$(date +'%Y-%m-%d %H:%M:%S %z')
 results_array["commit_hash"]=$(git rev-parse HEAD)
 results_array["commit_timestamp"]=$(git show -s --format='%ci')
@@ -120,8 +121,6 @@ mvn_exit_code=$?
 log_with_timestamp "$output"
 if [ $mvn_exit_code -ne 0 ]; then
     results_array["benchmark_status"]="ERROR"
-    remove_lockfile
-    exit 1
 fi
 
 output=$( (cd "${PROJECT_ROOT}" && mvn compile) 2>&1 )
@@ -129,8 +128,6 @@ mvn_exit_code=$?
 log_with_timestamp "$output"
 if [ $mvn_exit_code -ne 0 ]; then
     results_array["benchmark_status"]="ERROR"
-    remove_lockfile
-    exit 1
 fi
 
 # Capture the benchmark output
@@ -139,14 +136,12 @@ mvn_exit_code=$?
 log_with_timestamp "$benchmark_output"
 if [ $mvn_exit_code -ne 0 ]; then
     results_array["benchmark_status"]="ERROR"
-    remove_lockfile
-    exit 1
 fi
 
 # 3. Parse the output for needed info and add to result array
 
 # TODO: FIX COMPARISON
-results_array["baseline_frames"]=$(./get_baseline.py results.draw.frame_count)
+results_array["baseline_frames"]=$( "${SCRIPT_DIR}/get_baseline.py" results.draw.frame_count )
 results_array["current_frames"]=$(parse_frame_count "$benchmark_output")
 results_array["draw_average_fps"]=$(parse_average_fps "$benchmark_output")
 
