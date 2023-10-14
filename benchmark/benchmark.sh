@@ -140,7 +140,7 @@ fi
 
 # 3. Parse the output for needed info and add to result array
 
-# TODO: FIX COMPARISON
+# TODO: FIX COMPARISON - remove this and do in python
 results_array["baseline_frames"]=$( "${SCRIPT_DIR}/get_baseline.py" results.draw.frame_count )
 results_array["current_frames"]=$(parse_frame_count "$benchmark_output")
 results_array["draw_average_fps"]=$(parse_average_fps "$benchmark_output")
@@ -160,12 +160,13 @@ for key in "${!results_array[@]}"; do
 done | ./save_result.py "${BENCHMARK_RESULTS}"
 
 # Send results to discord
+# TODO - move to watcher?
 result_msg="\`Benchmark for commit (${results_array['commit_message']}): ${results_array['current_frames']} frames, ${results_array['average_fps']} average FPS, difference from baseline: ${results_array['difference']} frames (${results_array['percentage_change']}%)\`"
 send_discord_message "${DISCORD_WEBHOOK}" "${result_msg}"
 
 # Push results
 git add "${BENCHMARK_RESULTS}"
-git commit -m "Add benchmark info"
+git commit -m "Add benchmark results for ${results_array["commit_message"]}"
 git push
 
 remove_lockfile
