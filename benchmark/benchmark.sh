@@ -70,7 +70,7 @@ run_or_exit_and_log() {
 
 # load_dotenv can't be run with run_or_exit_and_log since
 # env variables stay inside the subshell there
-log_with_timestamp "$( { load_dotenv "${DOTENV_FILE}"; } 2>&1 )"
+load_dotenv "${DOTENV_FILE}" || log_with_timestamp "Warning: couldn't load env from ${DOTENV_FILE}"
 
 if [ -z "${XVFB_DISPLAY_NUM}" ]; then
     log_with_timestamp "Error: XVFB_DISPLAY_NUM environment variable is not set"
