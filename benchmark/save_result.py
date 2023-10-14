@@ -15,7 +15,7 @@ def append_result_to_file(filename, data):
 
 def structure_data(flat_data_dict: Dict) -> Dict:
     structured_data = {
-        "benchmark_status": flat_data_dict.get("benchmark_status", ""),
+        "status": flat_data_dict.get("benchmark_status", ""),
         "timestamp": flat_data_dict.get("timestamp", ""),
         "commit": {
             "hash": flat_data_dict.get("commit_hash", ""),
