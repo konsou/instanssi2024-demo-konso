@@ -15,6 +15,7 @@ def append_result_to_file(filename, data):
 
 def structure_data(flat_data_dict: Dict) -> Dict:
     structured_data = {
+        "benchmark_status": flat_data_dict.get("benchmark_status", ""),
         "timestamp": flat_data_dict.get("timestamp", ""),
         "commit": {
             "hash": flat_data_dict.get("commit_hash", ""),
@@ -70,10 +71,10 @@ def read_baseline_data(filename) -> Dict:
             if lines:
                 return json.loads(lines[-1].strip())
             else:
-                print(f"WARNING: No baseline data found in {filename}. Baseline info not available.")
+                print(f"Warning: No baseline data found in {filename}. Baseline info not available.")
                 return {}
     except (FileNotFoundError, json.JSONDecodeError):
-        print(f"WARNING: couldn't read baseline data from {filename}. Baseline info not available.")
+        print(f"Warning: couldn't read baseline data from {filename}. Baseline info not available.")
         return {}
 
 
