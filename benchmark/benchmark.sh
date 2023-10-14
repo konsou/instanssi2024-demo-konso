@@ -27,20 +27,12 @@ mkdir -p "${DETAILED_LOG_DIR}" || { echo "Failed to create log dir ${DETAILED_LO
 
 log_with_timestamp() {
     local timestamp
-    local output
     timestamp=$(date +'%Y-%m-%d %H:%M:%S %z')
-
-    # Capture combined stdout and stderr to a variable
-    output=$(eval "$1" 2>&1)
-    echo "$output"
-
-    # Append to log with timestamp
-    while IFS= read -r line; do
-        echo "${timestamp} | ${line}" >> "${DETAILED_LOG}"
-    done <<< "$output"
+    echo "$1"
+    echo "${timestamp} | $1" >> "${DETAILED_LOG}"
 }
 
-log_with_timestamp "load_dotenv ${DOTENV_FILE}"
+log_with_timestamp "$( { load_dotenv "${DOTENV_FILE}"; } 2>&1 )"
 
 if [ -z "${XVFB_DISPLAY_NUM}" ]; then
     echo "Error: XVFB_DISPLAY_NUM is not set in ${DOTENV_FILE}." | tee >(cat >&2) >> "${BENCHMARK_RESULTS}"
