@@ -4,3 +4,4 @@ xvfb
 curl
 maven
 python3
+bc
