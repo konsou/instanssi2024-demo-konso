@@ -141,12 +141,12 @@ fi
 # 3. Parse the output for needed info and add to result array
 
 # TODO: FIX COMPARISON - remove this and do in python
-results_array["baseline_frames"]=$( "${SCRIPT_DIR}/get_baseline.py" results.draw.frame_count )
-results_array["current_frames"]=$(parse_frame_count "$benchmark_output")
+results_array["baseline_draw_frame_count"]=$( "${SCRIPT_DIR}/get_baseline.py" results.draw.frame_count )
+results_array["draw_frame_count"]=$(parse_frame_count "$benchmark_output")
 results_array["draw_average_fps"]=$(parse_average_fps "$benchmark_output")
 
-difference=$((results_array["current_frames"] - results_array["baseline_frames"]))
-percentage_change=$(echo "scale=2; ($difference) / ${results_array["baseline_frames"]} * 100" | bc)
+difference=$((results_array["draw_frame_count"] - results_array["baseline_draw_frame_count"]))
+percentage_change=$(echo "scale=2; ($difference) / ${results_array["baseline_draw_frame_count"]} * 100" | bc)
 
 results_array["difference_frames"]=$difference
 results_array["difference_percentage"]=$percentage_change
@@ -161,7 +161,7 @@ done | ./save_result.py "${BENCHMARK_RESULTS}"
 
 # Send results to discord
 # TODO - move to watcher?
-result_msg="\`Benchmark for commit (${results_array['commit_message']}): ${results_array['current_frames']} frames, ${results_array['average_fps']} average FPS, difference from baseline: ${results_array['difference']} frames (${results_array['percentage_change']}%)\`"
+result_msg="\`Benchmark for commit (${results_array['commit_message']}): ${results_array['draw_frame_count']} frames, ${results_array['draw_average_fps']} average FPS, difference from baseline: ${results_array['difference_frames']} frames (${results_array['difference_percentage']}%)\`"
 send_discord_message "${DISCORD_WEBHOOK}" "${result_msg}"
 
 # Push results
