@@ -25,6 +25,24 @@ source "${SCRIPT_DIR}/discord.sh"
 
 mkdir -p "${DETAILED_LOG_DIR}" || { echo "Failed to create log dir ${DETAILED_LOG_DIR}" >&2; exit 1; }
 
+# Function definitions
+parse_frame_count() {
+  # Get the last occurrence of "Frame count (draw):" from the text
+  echo "$1" | grep "Frame count (draw):" | tail -n 1 | awk '{print $4}'
+}
+
+parse_average_fps() {
+  # Get the last occurrence of "Average FPS (draw):" from the text
+  echo "$1" | grep "Average FPS (draw):" | tail -n 1 | awk '{print $4}'
+}
+
+remove_lockfile() {
+  # Only remove lockfile if not skipping lock checks
+  if [ "${SKIP_LOCK}" != "skip-lock" ]; then
+    rm -f "${LOCK_FILE}"
+  fi
+}
+
 log_with_timestamp() {
     local timestamp
     timestamp=$(date +'%Y-%m-%d %H:%M:%S %z')
@@ -76,23 +94,6 @@ touch "${LOCK_FILE}"
 
 # Capture CPU load
 load_avg=$(uptime | awk -F'[a-z]:' '{ print $2 }')
-
-parse_frame_count() {
-  # Get the last occurrence of "Frame count (draw):" from the text
-  echo "$1" | grep "Frame count (draw):" | tail -n 1 | awk '{print $4}'
-}
-
-parse_average_fps() {
-  # Get the last occurrence of "Average FPS (draw):" from the text
-  echo "$1" | grep "Average FPS (draw):" | tail -n 1 | awk '{print $4}'
-}
-
-remove_lockfile() {
-  # Only remove lockfile if not skipping lock checks
-  if [ "${SKIP_LOCK}" != "skip-lock" ]; then
-    rm -f "${LOCK_FILE}"
-  fi
-}
 
 # 1. Gather available info before running the benchmark to result array
 declare -A results_array
