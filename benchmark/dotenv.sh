@@ -3,11 +3,11 @@
 # Exports all environment variables from a file
 # Example usage
 # source dotenv.sh
-# load_venv "/path/to/.env"
-load_venv() {
+# load_dotenv "/path/to/.env"
+load_dotenv() {
     # Check if the argument (file path) was provided
     if [[ -z "$1" ]]; then
-        echo "Error: No path provided to load_venv" >&2
+        echo "Error: No path provided to load_dotenv" >&2
         return 1
     fi
 

@@ -40,7 +40,7 @@ log_with_timestamp() {
     done <<< "$output"
 }
 
-log_with_timestamp "$(load_venv "${DOTENV_FILE}")"
+log_with_timestamp "load_dotenv ${DOTENV_FILE}"
 
 if [ -z "${XVFB_DISPLAY_NUM}" ]; then
     echo "Error: XVFB_DISPLAY_NUM is not set in ${DOTENV_FILE}." | tee >(cat >&2) >> "${BENCHMARK_RESULTS}"

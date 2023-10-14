@@ -9,7 +9,7 @@ fi
 
 source "${SCRIPT_DIR}/dotenv.sh"
 
-load_venv "${DOTENV_FILE}" || exit 1
+load_dotenv "${DOTENV_FILE}" || exit 1
 
 if [ -z "${XVFB_DISPLAY_NUM}" ]; then
     echo "Error: XVFB_DISPLAY_NUM is not set in ${DOTENV_FILE}." >&2
