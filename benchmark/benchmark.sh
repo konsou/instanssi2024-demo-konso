@@ -44,6 +44,8 @@ remove_lockfile() {
 }
 
 log_with_timestamp() {
+    # Not logging empty lines
+    if [ -z "$1" ]; then return; fi
     local timestamp
     timestamp=$(date +'%Y-%m-%d %H:%M:%S %z')
     echo "$1"
@@ -71,12 +73,12 @@ run_or_exit_and_log() {
 log_with_timestamp "$( { load_dotenv "${DOTENV_FILE}"; } 2>&1 )"
 
 if [ -z "${XVFB_DISPLAY_NUM}" ]; then
-    echo "Error: XVFB_DISPLAY_NUM is not set in ${DOTENV_FILE}." | tee >(cat >&2) >> "${BENCHMARK_RESULTS}"
+    log_with_timestamp "Error: XVFB_DISPLAY_NUM is not set in ${DOTENV_FILE}."
     exit 1
 fi
 
 if [ -z "${DISCORD_WEBHOOK}" ]; then
-    echo "Error: DISCORD_WEBHOOK is not set in ${DOTENV_FILE}." | tee >(cat >&2) >> "${BENCHMARK_RESULTS}"
+    log_with_timestamp "Error: DISCORD_WEBHOOK is not set in ${DOTENV_FILE}."
     exit 1
 fi
 
