@@ -27,9 +27,17 @@ mkdir -p "${DETAILED_LOG_DIR}" || { echo "Failed to create log dir ${DETAILED_LO
 
 log_with_timestamp() {
     local timestamp
+    local output
     timestamp=$(date +'%Y-%m-%d %H:%M:%S %z')
-    echo "$1"
-    echo "${timestamp} | $1" >> "${DETAILED_LOG}"
+
+    # Capture combined stdout and stderr to a variable
+    output=$(eval "$1" 2>&1)
+    echo "$output"
+
+    # Append to log with timestamp
+    while IFS= read -r line; do
+        echo "${timestamp} | ${line}" >> "${DETAILED_LOG}"
+    done <<< "$output"
 }
 
 { load_venv "${DOTENV_FILE}" ; } >> "${DETAILED_LOG}" 2>&1 || exit 1
@@ -124,6 +132,7 @@ fi
 
 # 3. Parse the output for needed info and add to result array
 
+# TODO: FIX COMPARISON
 results_array["baseline_frames"]=$(./get_baseline.py results.draw.frame_count)
 results_array["current_frames"]=$(parse_frame_count "$benchmark_output")
 results_array["draw_average_fps"]=$(parse_average_fps "$benchmark_output")
@@ -136,6 +145,8 @@ results_array["difference_percentage"]=$percentage_change
 
 # 4. Pipe the result array to our python script
 
+# TODO: RESULTS NOT SAVING
+# TODO: WILL RETRY FAILED BENCHMARKS FOREVER
 for key in "${!results_array[@]}"; do
     echo "$key=${results_array[$key]}"
 done | ./save_result.py "${BENCHMARK_RESULTS}"
