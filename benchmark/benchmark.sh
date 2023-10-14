@@ -60,13 +60,15 @@ run_or_exit_and_log() {
 
     # If the command failed, exit the script
     if [ $exit_code -ne 0 ]; then
-        log_with_timestamp "ERROR when running: $*"
+        log_with_timestamp "Error when running: $*"
         remove_lockfile
         exit $exit_code
     fi
 }
 
-run_or_exit_and_log load_dotenv "${DOTENV_FILE}"
+# load_dotenv can't be run with run_or_exit_and_log since
+# env variables stay inside the subshell there
+log_with_timestamp "$( { load_dotenv "${DOTENV_FILE}"; } 2>&1 )"
 
 if [ -z "${XVFB_DISPLAY_NUM}" ]; then
     echo "Error: XVFB_DISPLAY_NUM is not set in ${DOTENV_FILE}." | tee >(cat >&2) >> "${BENCHMARK_RESULTS}"
