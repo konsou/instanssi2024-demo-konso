@@ -89,12 +89,12 @@ SKIP_LOCK=${1:-"false"}
 
 # Check for lock file to determine if another instance of this script or benchmark is running
 if [ "${SKIP_LOCK}" != "skip-lock" ] && [ -e "${LOCK_FILE}" ]; then
-    echo "Another instance of the script or benchmark is running."
+    log_with_timestamp "Error: Another instance of benchmark is running."
     exit 1
 fi
 
 # Create a lock file
-touch "${LOCK_FILE}"
+run_or_exit_and_log touch "${LOCK_FILE}"
 
 # Capture CPU load
 load_avg=$(uptime | awk -F'[a-z]:' '{ print $2 }')
@@ -111,7 +111,7 @@ results_array["author_name"]=$(git show -s --format='%an')
 results_array["author_email"]=$(git show -s --format='%ae')
 
 results_array["hostname"]=$(hostname)
-results_array["cpu_load_averages"]=$load_avg  # Assuming you've set this before
+results_array["cpu_load_averages"]=$load_avg
 
 # 2. Build and compile
 log_with_timestamp "Building"
