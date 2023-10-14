@@ -36,6 +36,13 @@ parse_average_fps() {
   echo "$1" | grep "Average FPS (draw):" | tail -n 1 | awk '{print $4}'
 }
 
+parse_keyword() {
+  local input_string=$1
+  local keyword=$2
+  # NOTE: USES ":" AS A DELIMITER!
+  echo "$input_string" | grep "$keyword" | cut -d ':' -f 2 | awk '{print $1}'
+}
+
 remove_lockfile() {
   # Only remove lockfile if not skipping lock checks
   if [ "${SKIP_LOCK}" != "skip-lock" ]; then
@@ -139,8 +146,13 @@ if [ $mvn_exit_code -ne 0 ]; then
 fi
 
 # 3. Parse the output for needed info and add to result array
+# TODO: use the new parse parse_keyword function to parse runtimes and add them to results_array
+#                "runtime_ms": int(flat_data_dict.get("total_runtime_ms", 0))
+#                "runtime_ms": int(flat_data_dict.get("setup_runtime_ms", 0))
+#                "runtime_ms": int(flat_data_dict.get("draw_runtime_ms", 0)),
+#                "frame_count": int(flat_data_dict.get("draw_frame_count", 0)),
+#                "average_fps": float(flat_data_dict.get("draw_average_fps", 0.0))
 
-# TODO: FIX COMPARISON - remove this and do in python
 results_array["baseline_draw_frame_count"]=$( "${SCRIPT_DIR}/get_baseline.py" results.draw.frame_count )
 results_array["draw_frame_count"]=$(parse_frame_count "$benchmark_output")
 results_array["draw_average_fps"]=$(parse_average_fps "$benchmark_output")
@@ -153,7 +165,6 @@ results_array["difference_percentage"]=$percentage_change
 
 # 4. Pipe the result array to our python script
 
-# TODO: RESULTS NOT SAVING
 # TODO: WILL RETRY FAILED BENCHMARKS FOREVER
 for key in "${!results_array[@]}"; do
     echo "$key=${results_array[$key]}"
