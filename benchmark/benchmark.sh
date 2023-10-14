@@ -73,12 +73,12 @@ run_or_exit_and_log() {
 log_with_timestamp "$( { load_dotenv "${DOTENV_FILE}"; } 2>&1 )"
 
 if [ -z "${XVFB_DISPLAY_NUM}" ]; then
-    log_with_timestamp "Error: XVFB_DISPLAY_NUM is not set in ${DOTENV_FILE}."
+    log_with_timestamp "Error: XVFB_DISPLAY_NUM environment variable is not set"
     exit 1
 fi
 
 if [ -z "${DISCORD_WEBHOOK}" ]; then
-    log_with_timestamp "Error: DISCORD_WEBHOOK is not set in ${DOTENV_FILE}."
+    log_with_timestamp "Error: DISCORD_WEBHOOK environment variable is not set"
     exit 1
 fi
 
